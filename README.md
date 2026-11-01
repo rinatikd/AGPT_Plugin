@@ -1,24 +1,145 @@
-# AGPT/APPT — AutoCAD 2026 Plugin
+# AGPT / APPT — плагин AutoCAD v1.0
 
-**.NET 8** plugin: gas (AGPT) + powder (APPT) fire-suppression design album.
+Плагин для проектирования **автоматического газового (АГПТ)** и **порошкового (АППТ)** пожаротушения.
 
-**Repo:** https://github.com/rinatikd/AGPT_Plugin  
-**Owner:** rinatikd
+Вся документация (общие данные, расчёты, схемы, спецификация) формируется **как чертежи в модели AutoCAD**, а не во внешних Word/Excel.
 
-## For the next AI agent
+**Эталон оформления:** проекты «Детский сад АГПТ/АППТ 09.02.26» (Астана), ГОСТ Р 21.101, ГОСТ 21.110.
 
-1. Read **[TRANSFER_FOR_AI.md](./TRANSFER_FOR_AI.md)**.
-2. Full sources: handoff zip `AGPT_Plugin_GitHub_Handoff_20261101.zip` (SHA256 prefix `ed779aa2c8cef15f`) from Grok project artifacts, or `c:\\Work\\AGPT_Plugin\\` on owner PC.
-3. Meta already in repo: TRANSFER_FOR_AI.md, AGPT.csproj, PluginInit.cs, HANDOVER.md, BUILD*.
+---
 
-### Build
+## Быстрый старт (3 шага)
+
+### 1. Сборка
+
+Нужен **.NET 8 SDK** (x64): https://dotnet.microsoft.com/download/dotnet/8.0
+
 ```bat
-dotnet build AGPT.csproj -c Release -p:Platform=x64 -p:AcadDir="C:\\Program Files\\Autodesk\\AutoCAD 2026" --no-incremental
-NETLOAD bin\\Release\\AGPT.dll
+cd AGPT_Plugin
+build.bat
 ```
 
-### Commands
-AGPT_ALBUM, AGPT_ZONE, AGPT_CALC, APPT_ALBUM, AGPT_FRAME, AGPT_UGO_LIST
+Результат: `bin\Release\AGPT.dll`
 
-### Open bug (priority 1)
-Stamp overlap on all AGPT_ALBUM sheets. ContentBottom=90 insufficient; hard-coded o.Y+28..85 invade stamp. Raise all content Y above stamp zone, then PlanSheet+UGO, then Spec GOST 21.110.
+### 2. Загрузка
+
+В AutoCAD:
+
+```
+NETLOAD
+```
+
+Укажите `bin\Release\AGPT.dll`.
+
+Или установите bundle (автозагрузка при старте):
+
+```bat
+install_bundle.bat
+```
+
+(нужны права администратора; затем перезапуск AutoCAD)
+
+### 3. Проверка
+
+```
+AGPT_ALBUM
+APPT_ALBUM
+```
+
+`ZOOM` → `E` — листы альбома в модели по оси X.
+
+---
+
+## Команды АГПТ (газ)
+
+| Команда | Назначение |
+|---------|------------|
+| **AGPT_ALBUM** | Полный альбом: титул, ОД, схема, расчёт, аксо, план, спецификация, КЖ |
+| AGPT_ZONE | Контур зоны защиты |
+| AGPT_MODULE | Модуль газового ПТ |
+| AGPT_NOZZLE | Насадок |
+| AGPT_PIPE | Сегмент трубопровода |
+| AGPT_AUTO | Устройства автоматики (ИП, табло, УДП) |
+| AGPT_CALC | Расчёт массы ГОТВ |
+| AGPT_HYDRO2 | Гидравлика, NPSH, удар, t_zpu |
+| AGPT_AXO2 | Аксонометрия сети |
+| AGPT_SHEET_OD / SS / AXO / SPEC / KZH | Отдельные листы |
+
+**Расчёт массы (СП 485):**  
+`Mp = Vp·ρ1·(1+K2)·ln(100/(100−Cn))`, `K2 = Π·δ·tпод·√H`, `Mg = ⌈K1·(Mp+Mтр)⌉`
+
+---
+
+## Команды АППТ (порошок)
+
+| Команда | Назначение |
+|---------|------------|
+| **APPT_ALBUM** | Полный альбом: титул, ОД, схема, расчёт, план, спецификация |
+| APPT_ZONE | Зона (Vp, Vн, k4) |
+| APPT_CALC | Число модулей N |
+| APPT_SHEET_OD / CALC / SPEC | Отдельные листы |
+
+**Расчёт модулей:**  
+`N = (Vp / Vн) · k1 · k2 · k3 · k4`  
+(Тунгус-4: Vн = 70 м³, k4 = 1.2, резерв 100%)
+
+---
+
+## Рабочий порядок
+
+### Газ (АГПТ)
+
+```
+1. AGPT_ZONE → AGPT_MODULE → AGPT_NOZZLE → AGPT_PIPE → AGPT_AUTO
+2. AGPT_CALC
+3. AGPT_HYDRO2
+4. AGPT_ALBUM
+```
+
+### Порошок (АППТ)
+
+```
+1. APPT_ZONE  (имя, Vp, Vн, k4)
+2. APPT_CALC
+3. APPT_ALBUM
+```
+
+Без своих зон команды `*_ALBUM` подставляют демо-данные из эталона «Детский сад».
+
+---
+
+## Состав DLL
+
+| Файл | Содержание |
+|------|------------|
+| `PluginInit.cs` | Точка входа, баннер команд |
+| `AGPT_Stage3_Blocks_Full.cs` | Блоки АГПТ: зоны, модули, трубы, автоматика |
+| `AGPT_Stage4_Hydro_Axo_v2.cs` | Гидравлика + аксонометрия |
+| `AGPT_Plugin_Drawings.cs` | Альбом АГПТ (листы в модели) |
+| `APPT_Plugin_Drawings.cs` | Альбом и расчёт АППТ |
+
+---
+
+## Требования
+
+- Windows x64
+- AutoCAD 2024–2026 (предпочтительно 2025/2026, .NET 8)
+- .NET 8 SDK **или** Visual Studio 2022 + MSBuild
+
+---
+
+## Типичные ошибки
+
+| Ошибка | Решение |
+|--------|---------|
+| `msbuild` / `dotnet` не найден | Установить .NET 8 SDK, открыть **новое** окно cmd |
+| Не найден `AcCoreMgd.dll` | `build.bat "C:\Program Files\Autodesk\AutoCAD 2026"` |
+| BadImageFormatException | Собирать только **x64** |
+| Команды не видны | Повторный `NETLOAD` или перезапуск AutoCAD |
+| Bundle не ставится | Запуск `install_bundle.bat` от имени администратора |
+
+---
+
+## Версия
+
+**1.0.0** — пользовательская версия (АГПТ + АППТ, эталон Астана 2026).

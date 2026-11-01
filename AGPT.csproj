@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  AGPT/APPT v1.0 — AutoCAD 2025/2026 (.NET 8)
+  Сборка: build.bat
+-->
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
     <PlatformTarget>x64</PlatformTarget>
@@ -17,6 +22,7 @@
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     <AcadDir Condition="'$(AcadDir)' == ''">C:\Program Files\Autodesk\AutoCAD 2026</AcadDir>
   </PropertyGroup>
+
   <ItemGroup>
     <Reference Include="AcCoreMgd">
       <HintPath>$(AcadDir)\AcCoreMgd.dll</HintPath>
@@ -31,6 +37,7 @@
       <Private>false</Private>
     </Reference>
   </ItemGroup>
+
   <ItemGroup>
     <Compile Include="src\AGPT_Stage3_Blocks_Full.cs" />
     <Compile Include="src\AGPT_Stage4_Hydro_Axo_v2.cs" />
@@ -38,4 +45,10 @@
     <Compile Include="src\APPT_Plugin_Drawings.cs" />
     <Compile Include="src\PluginInit.cs" />
   </ItemGroup>
+
+  <Target Name="CheckAcadRefs" BeforeTargets="ResolveAssemblyReferences">
+    <Warning Condition="!Exists('$(AcadDir)\AcCoreMgd.dll')"
+             Text="AutoCAD DLLs not found at $(AcadDir). Pass /p:AcadDir=..." />
+  </Target>
+
 </Project>
