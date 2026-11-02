@@ -1,0 +1,2637 @@
+{
+ "file": "Планы по МГИМО от Блок 1 - АГПТ пример четвертая часть для меня.dxf",
+ "size_bytes": 24753776,
+ "header": {
+  "$ACADVER": [
+   [
+    1,
+    "AC1032"
+   ]
+  ],
+  "$DWGCODEPAGE": [
+   [
+    3,
+    "ANSI_1251"
+   ]
+  ],
+  "$EXTMIN": [
+   [
+    10,
+    "2047.371099559161"
+   ],
+   [
+    20,
+    "1026.388653109258"
+   ],
+   [
+    30,
+    "-5808.122080497959"
+   ]
+  ],
+  "$EXTMAX": [
+   [
+    10,
+    "180950.8602750035"
+   ],
+   [
+    20,
+    "12906.38865310925"
+   ],
+   [
+    30,
+    "4646.497664398367"
+   ]
+  ],
+  "$LIMMIN": [
+   [
+    10,
+    "0.0"
+   ],
+   [
+    20,
+    "0.0"
+   ]
+  ],
+  "$LIMMAX": [
+   [
+    10,
+    "420.0"
+   ],
+   [
+    20,
+    "297.0"
+   ]
+  ],
+  "$LTSCALE": [
+   [
+    40,
+    "1.0"
+   ]
+  ],
+  "$TEXTSTYLE": [
+   [
+    7,
+    "Standard"
+   ]
+  ],
+  "$DIMSCALE": [
+   [
+    40,
+    "1.0"
+   ]
+  ],
+  "$DIMSTYLE": [
+   [
+    2,
+    "ISO-25"
+   ]
+  ],
+  "$MEASUREMENT": [
+   [
+    70,
+    "     1"
+   ]
+  ],
+  "$LWDISPLAY": [
+   [
+    290,
+    "     0"
+   ]
+  ],
+  "$INSUNITS": [
+   [
+    70,
+    "     4"
+   ]
+  ]
+ },
+ "styles": [
+  {
+   "name": "Standard",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "Аннотативный",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "ARIAL",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "GOST-2.304_Type-B",
+   "font": "GOST_Common.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "GOST-2.304_Type-B_italic",
+   "font": "GOST_Common Italic.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "АР",
+   "font": "isocpeui.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "Архитектурный",
+   "font": "isocpeui.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "СПДС",
+   "font": "isocpeur.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 0.9,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "RubezhCAD",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 0.8,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "Проект",
+   "font": "isocpeui.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "style1",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "Standard2",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "PDF Arial",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "Стиль ВК",
+   "font": "isocpeui.ttf",
+   "bigfont": "",
+   "height": 250.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "PDF Courier New",
+   "font": "cour.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "ARIALUNICODEMS",
+   "font": "ARIALUNI.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "ISOCPEUR",
+   "font": "isocpeur.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "simplex",
+   "font": "simplex.shx",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 0.7,
+   "oblique": 0.0,
+   "flags": "     0"
+  }
+ ],
+ "layers": [
+  {
+   "name": "0",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "STANDARD",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    25",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "АГПТ",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "4.4.4._Сэндвич",
+   "color": "   252",
+   "linetype": "Continuous",
+   "lineweight": "    53",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Defpoints",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": "     0"
+  },
+  {
+   "name": "АСПТ",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "RC-Таблицы",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -1",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "013",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    18",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "О_Формат",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Формат",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    20",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Пожарка",
+   "color": "     1",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "5",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    13",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Балки__каркасы__пороги",
+   "color": "    30",
+   "linetype": "Continuous",
+   "lineweight": "    25",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Горизонтали--LBL",
+   "color": "    52",
+   "linetype": "Continuous",
+   "lineweight": "     5",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Горизонтали--MAJ",
+   "color": "    56",
+   "linetype": "Continuous",
+   "lineweight": "     5",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Лестница",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    25",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Меблировка",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    25",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Общий01",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    13",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Общий02",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    18",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Общий03",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    25",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Общий04",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    50",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Оси",
+   "color": "    30",
+   "linetype": "LTYPE_5",
+   "lineweight": "     9",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Перекрытие_ж_бетон",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    50",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Растровая_поверхность",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "     5",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Стена",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    50",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Стилевая_поверхн.",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "     5",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Текст_1_10",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    25",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Текст_1_20",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    25",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Текст_1_50",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    25",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": ".",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    50",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "shkl",
+   "color": "   138",
+   "linetype": "Continuous",
+   "lineweight": "    15",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "размер КЛАДОЧНЫЙ2",
+   "color": "   204",
+   "linetype": "Continuous",
+   "lineweight": "     5",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "ПС",
+   "color": "     1",
+   "linetype": "Continuous",
+   "lineweight": "    50",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "®_КИРПИЧ_120",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    35",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "®_ЛЕСТНИЦА",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    18",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "PDF _Геометрия",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "PDF _Сплошная заливка",
+   "color": "     1",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "RC-Выноски",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "     0",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "DIP",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "SPRKDAT1",
+   "color": "    30",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "NOZZLE",
+   "color": "     4",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "JAM NOVEC SYSTEM PIPING",
+   "color": "     3",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "FM",
+   "color": "     6",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "ось",
+   "color": "     8",
+   "linetype": "ACAD_ISO10W100",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "BORU",
+   "color": "     9",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "SM_kelepçe",
+   "color": "     2",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  }
+ ],
+ "linetypes": [
+  {
+   "name": "ByBlock",
+   "desc": "",
+   "pattern": []
+  },
+  {
+   "name": "ByLayer",
+   "desc": "",
+   "pattern": []
+  },
+  {
+   "name": "Continuous",
+   "desc": "Solid line",
+   "pattern": []
+  },
+  {
+   "name": "DASHED",
+   "desc": "Штриховая __ __ __ __ __ __ __ __ __",
+   "pattern": [
+    5.0,
+    -2.0,
+    0.0
+   ]
+  },
+  {
+   "name": "штриховая",
+   "desc": "Штриховая __ __ __ __ __ __ __ __ __ __ __ __ _",
+   "pattern": [
+    0.5,
+    -0.25
+   ]
+  },
+  {
+   "name": "LTYPE_2",
+   "desc": "Пунктирная",
+   "pattern": [
+    200.0,
+    -70.0
+   ]
+  },
+  {
+   "name": "LTYPE_5",
+   "desc": "Пунктирная",
+   "pattern": [
+    800.0,
+    -100.0,
+    100.0,
+    -100.0
+   ]
+  },
+  {
+   "name": "LTYPE_9",
+   "desc": "Точечная",
+   "pattern": [
+    0.0,
+    -100.0
+   ]
+  },
+  {
+   "name": "CONTINUA",
+   "desc": "Linea continua",
+   "pattern": []
+  },
+  {
+   "name": "ACAD_ISO10W100",
+   "desc": " ISO trazo, punto __ . __ . __ . __ . __ . __ .",
+   "pattern": [
+    12.0,
+    -3.0,
+    0.5,
+    -3.0
+   ]
+  },
+  {
+   "name": "1TS06",
+   "desc": "_______________ _ _______________ _ ___________",
+   "pattern": [
+    6.0,
+    -0.15,
+    0.075,
+    -0.15,
+    9.0
+   ]
+  },
+  {
+   "name": "PDF_IMPORT",
+   "desc": "",
+   "pattern": [
+    0.8,
+    -0.2
+   ]
+  },
+  {
+   "name": "CENTER",
+   "desc": "Center ____ _ ____ _ ____ _ ____ _ ____ _ ____",
+   "pattern": [
+    31.75,
+    -6.349999999999997,
+    6.349999999999997,
+    -6.349999999999997
+   ]
+  }
+ ],
+ "dimstyles": [
+  {
+   "name": "Standard",
+   "DIMSCALE": null,
+   "DIMASZ": null,
+   "DIMEXO": null,
+   "DIMEXE": null,
+   "DIMTXT": null,
+   "DIMGAP": null,
+   "DIMTXSTY": "11",
+   "DIMBLK": null
+  },
+  {
+   "name": "Аннотативный",
+   "DIMSCALE": 0.0,
+   "DIMASZ": 2.5,
+   "DIMEXO": 0.625,
+   "DIMEXE": 1.25,
+   "DIMTXT": 2.5,
+   "DIMGAP": 0.625,
+   "DIMTXSTY": "11",
+   "DIMBLK": null
+  },
+  {
+   "name": "ISO-25",
+   "DIMSCALE": null,
+   "DIMASZ": 2.5,
+   "DIMEXO": 0.625,
+   "DIMEXE": 1.25,
+   "DIMTXT": 2.5,
+   "DIMGAP": 0.625,
+   "DIMTXSTY": "11",
+   "DIMBLK": null
+  },
+  {
+   "name": "krilca",
+   "DIMSCALE": 0.0,
+   "DIMASZ": 150.0,
+   "DIMEXO": 50.0,
+   "DIMEXE": 100.0,
+   "DIMTXT": 180.0,
+   "DIMGAP": 60.0,
+   "DIMTXSTY": "1D50C",
+   "DIMBLK": "29B"
+  }
+ ],
+ "blocks": {
+  "_OBLIQUE": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -0.5,
+    -0.5,
+    0.5,
+    0.5
+   ],
+   "entities": {
+    "LINE": 1
+   },
+   "attdefs": []
+  },
+  "Ramka": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -205.0,
+    -5.0,
+    5.0,
+    292.0
+   ],
+   "entities": {
+    "LWPOLYLINE": 17,
+    "MTEXT": 10,
+    "ATTDEF": 2,
+    "LINE": 2915,
+    "TEXT": 31,
+    "INSERT": 1
+   },
+   "attdefs": [
+    {
+     "tag": "ЛИСТ_второй",
+     "prompt": "Лист второй и далее",
+     "default": "2",
+     "height": 2.5,
+     "style": "СПДС",
+     "pos": [
+      -5.875,
+      3.75
+     ]
+    },
+    {
+     "tag": "ШИФР_ПРОЕКТА_ЛИСТ2",
+     "prompt": "",
+     "default": "Шифр проекта",
+     "height": 2.5,
+     "style": "СПДС",
+     "pos": [
+      -76.375,
+      6.249999999999999
+     ]
+    }
+   ]
+  },
+  "РамкаА3": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    62249.415,
+    201355.452,
+    82395.915,
+    215702.452
+   ],
+   "entities": {
+    "LWPOLYLINE": 2,
+    "LINE": 7,
+    "TEXT": 3
+   },
+   "attdefs": []
+  },
+  "формул": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -385383.469,
+    24498.042,
+    -383746.616,
+    24685.179
+   ],
+   "entities": {
+    "MTEXT": 3
+   },
+   "attdefs": []
+  },
+  "форм1": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    572608.823,
+    538502.379,
+    575920.075,
+    539027.379
+   ],
+   "entities": {
+    "LWPOLYLINE": 5,
+    "MTEXT": 10
+   },
+   "attdefs": []
+  },
+  "насадок": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    4552758.719,
+    918645.28,
+    4552927.115,
+    918816.872
+   ],
+   "entities": {
+    "LWPOLYLINE": 2,
+    "CIRCLE": 3
+   },
+   "attdefs": []
+  },
+  "щит-аксон": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -611086.008,
+    556432.008,
+    -606837.454,
+    566116.576
+   ],
+   "entities": {
+    "LWPOLYLINE": 5
+   },
+   "attdefs": []
+  },
+  "подпись Громов": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    1.789,
+    -0.146,
+    13.602,
+    4.827
+   ],
+   "entities": {
+    "LINE": 183
+   },
+   "attdefs": []
+  },
+  "сх.блок.": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -679108.845,
+    0.0,
+    0.0,
+    510517.502
+   ],
+   "entities": {
+    "LINE": 541,
+    "TEXT": 33,
+    "CIRCLE": 19,
+    "ARC": 2,
+    "HATCH": 1
+   },
+   "attdefs": []
+  },
+  "display front": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -249.2,
+    -242.948,
+    367.054,
+    1866.317
+   ],
+   "entities": {
+    "ARC": 18,
+    "LINE": 10,
+    "LWPOLYLINE": 19
+   },
+   "attdefs": []
+  },
+  "block": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -387.335,
+    -374.918,
+    389.601,
+    1107.55
+   ],
+   "entities": {
+    "LWPOLYLINE": 18,
+    "LINE": 53,
+    "ELLIPSE": 8,
+    "MTEXT": 5,
+    "CIRCLE": 8,
+    "ARC": 55
+   },
+   "attdefs": []
+  },
+  "кросс1эт": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -563016.465,
+    0.0,
+    0.0,
+    523398.95
+   ],
+   "entities": {
+    "HATCH": 6,
+    "CIRCLE": 3,
+    "TEXT": 5,
+    "LINE": 35,
+    "ARC": 2,
+    "LWPOLYLINE": 6
+   },
+   "attdefs": []
+  },
+  "крос2эт": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -471170.876,
+    0.0,
+    0.0,
+    517605.878
+   ],
+   "entities": {
+    "HATCH": 6,
+    "LINE": 39,
+    "TEXT": 5,
+    "CIRCLE": 3,
+    "ARC": 2,
+    "LWPOLYLINE": 7
+   },
+   "attdefs": []
+  },
+  "кросс3эт": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -523780.593,
+    0.0,
+    0.0,
+    520772.031
+   ],
+   "entities": {
+    "HATCH": 6,
+    "LINE": 38,
+    "TEXT": 5,
+    "CIRCLE": 3,
+    "ARC": 2,
+    "LWPOLYLINE": 7
+   },
+   "attdefs": []
+  },
+  "кросс4эт": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -359289.252,
+    0.0,
+    0.0,
+    520525.691
+   ],
+   "entities": {
+    "HATCH": 5,
+    "CIRCLE": 3,
+    "TEXT": 5,
+    "LINE": 40,
+    "ARC": 3,
+    "LWPOLYLINE": 7
+   },
+   "attdefs": []
+  },
+  "Геркон": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    0.0,
+    -2659.254,
+    184663.585,
+    0.0
+   ],
+   "entities": {
+    "HATCH": 2,
+    "LWPOLYLINE": 1,
+    "LINE": 2
+   },
+   "attdefs": []
+  },
+  "BTH": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -277065.37,
+    250476.466,
+    -276565.37,
+    250976.466
+   ],
+   "entities": {
+    "LINE": 3,
+    "LWPOLYLINE": 1
+   },
+   "attdefs": []
+  },
+  "BIAL": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    252502.558,
+    343587.543,
+    253015.136,
+    344099.677
+   ],
+   "entities": {
+    "CIRCLE": 1,
+    "LINE": 2
+   },
+   "attdefs": []
+  },
+  "ЭДУ": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -821047.144,
+    54594.241,
+    -820797.144,
+    54844.241
+   ],
+   "entities": {
+    "ARC": 1,
+    "LINE": 1,
+    "LWPOLYLINE": 1
+   },
+   "attdefs": []
+  },
+  "ИПР511": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -820637.144,
+    54594.241,
+    -820387.144,
+    54844.241
+   ],
+   "entities": {
+    "ARC": 1,
+    "LINE": 1,
+    "LWPOLYLINE": 1
+   },
+   "attdefs": []
+  },
+  "BIAS": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -819825.294,
+    54032.99,
+    -819654.827,
+    54229.07
+   ],
+   "entities": {
+    "LWPOLYLINE": 1,
+    "LINE": 3
+   },
+   "attdefs": []
+  },
+  "извещатель фасад": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    0.0,
+    0.0,
+    121.71,
+    162.82
+   ],
+   "entities": {
+    "HATCH": 2,
+    "LINE": 6,
+    "LWPOLYLINE": 74
+   },
+   "attdefs": []
+  },
+  "маяк": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    275862.754,
+    44032.976,
+    275935.665,
+    44157.453
+   ],
+   "entities": {
+    "LWPOLYLINE": 1,
+    "LINE": 2,
+    "ARC": 2
+   },
+   "attdefs": []
+  },
+  "MPP": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    4909347.386,
+    -922176.067,
+    4909717.001,
+    -921749.273
+   ],
+   "entities": {
+    "CIRCLE": 1,
+    "LWPOLYLINE": 1,
+    "MTEXT": 1
+   },
+   "attdefs": []
+  },
+  "An": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -686790.838,
+    -717272.843,
+    0.0,
+    0.0
+   ],
+   "entities": {
+    "LWPOLYLINE": 2,
+    "HATCH": 1
+   },
+   "attdefs": []
+  },
+  "BI": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -677312.857,
+    -715778.857,
+    -676638.329,
+    -715397.553
+   ],
+   "entities": {
+    "LWPOLYLINE": 7
+   },
+   "attdefs": []
+  },
+  "UG": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -677312.857,
+    -717354.059,
+    0.0,
+    0.0
+   ],
+   "entities": {
+    "LWPOLYLINE": 4,
+    "HATCH": 1
+   },
+   "attdefs": []
+  },
+  "монтBTH": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    0.0,
+    -935339.064,
+    4849980.059,
+    0.0
+   ],
+   "entities": {
+    "LWPOLYLINE": 410,
+    "ARC": 22,
+    "HATCH": 1,
+    "MULTILEADER": 4,
+    "SPLINE": 2
+   },
+   "attdefs": []
+  },
+  "360 NOZZLE": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -175.879,
+    -181.36,
+    175.879,
+    183.407
+   ],
+   "entities": {
+    "ELLIPSE": 22,
+    "SOLID": 6,
+    "LINE": 14
+   },
+   "attdefs": []
+  },
+  "ЭКМ": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    759475.644,
+    -1374427.515,
+    759676.888,
+    -1374270.0
+   ],
+   "entities": {
+    "CIRCLE": 1,
+    "LWPOLYLINE": 4
+   },
+   "attdefs": []
+  },
+  "СДУ": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    0.0,
+    0.0,
+    4397150.862,
+    581554.668
+   ],
+   "entities": {
+    "CIRCLE": 1,
+    "HATCH": 1,
+    "LWPOLYLINE": 1
+   },
+   "attdefs": []
+  },
+  "_Open30": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -1.0,
+    -0.268,
+    0.0,
+    0.268
+   ],
+   "entities": {
+    "LINE": 3
+   },
+   "attdefs": []
+  },
+  "НКТ": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    5329715.318,
+    928735.05,
+    5331455.434,
+    929916.031
+   ],
+   "entities": {
+    "CIRCLE": 2,
+    "LWPOLYLINE": 6,
+    "ARC": 25,
+    "LINE": 75
+   },
+   "attdefs": []
+  },
+  "MGF": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    34610.145,
+    -15602.981,
+    34971.488,
+    -14936.14
+   ],
+   "entities": {
+    "LINE": 83,
+    "ARC": 12,
+    "LWPOLYLINE": 8,
+    "CIRCLE": 10
+   },
+   "attdefs": []
+  },
+  "BTK": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -661105.268,
+    0.0,
+    0.0,
+    517127.189
+   ],
+   "entities": {
+    "LWPOLYLINE": 2,
+    "HATCH": 1,
+    "CIRCLE": 1,
+    "MTEXT": 1
+   },
+   "attdefs": []
+  },
+  "BTH-потолок": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -661811.452,
+    325081.66,
+    -448450.855,
+    518344.563
+   ],
+   "entities": {
+    "INSERT": 1,
+    "LWPOLYLINE": 1
+   },
+   "attdefs": []
+  },
+  "BTH-пол": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -661811.452,
+    323965.657,
+    -448450.855,
+    517228.559
+   ],
+   "entities": {
+    "INSERT": 1,
+    "LWPOLYLINE": 1
+   },
+   "attdefs": []
+  },
+  "книгохранилище": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    0.0,
+    -31405.048,
+    445206.701,
+    0.0
+   ],
+   "entities": {
+    "HATCH": 22,
+    "CIRCLE": 11,
+    "TEXT": 8,
+    "LINE": 282,
+    "ARC": 96,
+    "LWPOLYLINE": 10
+   },
+   "attdefs": []
+  }
+ },
+ "inserts": {
+  "извещатель фасад": {
+   "count": 13,
+   "bbox": [
+    65384.837,
+    -24935.762,
+    139060.079,
+    -22623.3
+   ],
+   "scales": {
+    "(180.0, 180.0)": 13
+   },
+   "layers": {
+    "АГПТ": 13
+   }
+  },
+  "BIAL": {
+   "count": 9,
+   "bbox": [
+    -56996.762,
+    -180002.112,
+    250851.872,
+    192222.693
+   ],
+   "scales": {
+    "(0.5389999999999999, 0.5389999999999999)": 6,
+    "(0.3233999999999999, 0.3233999999999999)": 3
+   },
+   "layers": {
+    "АГПТ": 9
+   }
+  },
+  "насадок": {
+   "count": 8,
+   "bbox": [
+    -3116124.3,
+    -635179.321,
+    3330072.637,
+    647467.295
+   ],
+   "scales": {
+    "(0.7, 0.7)": 8
+   },
+   "layers": {
+    "АГПТ": 8
+   }
+  },
+  "сх.блок.": {
+   "count": 7,
+   "bbox": [
+    260984.891,
+    -149443.945,
+    368815.673,
+    -149443.945
+   ],
+   "scales": {
+    "(0.3, 0.3)": 7
+   },
+   "layers": {
+    "АГПТ": 7
+   }
+  },
+  "BTH": {
+   "count": 7,
+   "bbox": [
+    279718.954,
+    -185908.869,
+    328256.651,
+    -107484.562
+   ],
+   "scales": {
+    "(0.7700000000000001, 0.7700000000000001)": 4,
+    "(0.462, 0.462)": 3
+   },
+   "layers": {
+    "АГПТ": 7
+   }
+  },
+  "маяк": {
+   "count": 6,
+   "bbox": [
+    -79541.101,
+    -20864.582,
+    323413.632,
+    -20864.582
+   ],
+   "scales": {
+    "(0.6, 0.6)": 3,
+    "(-0.6, 0.6)": 3
+   },
+   "layers": {
+    "®_КИРПИЧ_120": 6
+   }
+  },
+  "Геркон": {
+   "count": 6,
+   "bbox": [
+    221011.162,
+    3989.781,
+    257132.843,
+    4557.213
+   ],
+   "scales": {
+    "(0.7700000000000001, 0.7700000000000001)": 4,
+    "(0.462, 0.462)": 2
+   },
+   "layers": {
+    "АГПТ": 6
+   }
+  },
+  "BIAS": {
+   "count": 6,
+   "bbox": [
+    -4564.558,
+    -1257118.749,
+    201391.462,
+    1269242.662
+   ],
+   "scales": {
+    "(1.54, 1.54)": 4,
+    "(0.9239999999999998, 0.9239999999999998)": 2
+   },
+   "layers": {
+    "АГПТ": 6
+   }
+  },
+  "360 NOZZLE": {
+   "count": 5,
+   "bbox": [
+    61146.156,
+    6473.036,
+    169815.191,
+    8402.188
+   ],
+   "scales": {
+    "(-1.0, 1.0)": 5
+   },
+   "layers": {
+    "JAM NOVEC SYSTEM PIPING": 5
+   }
+  },
+  "НКТ": {
+   "count": 4,
+   "bbox": [
+    -523168.214,
+    -99541.971,
+    -415699.093,
+    -99218.115
+   ],
+   "scales": {
+    "(0.10976, 0.10976)": 4
+   },
+   "layers": {
+    "АГПТ": 4
+   }
+  },
+  "СДУ": {
+   "count": 4,
+   "bbox": [
+    -4157836.906,
+    -1358179.376,
+    -2362115.33,
+    -813501.628
+   ],
+   "scales": {
+    "(1.0, 1.0)": 3,
+    "(0.6, 0.6)": 1
+   },
+   "layers": {
+    "АГПТ": 4
+   }
+  },
+  "ЭКМ": {
+   "count": 4,
+   "bbox": [
+    -1234385.353,
+    -878730.064,
+    -608044.398,
+    -525832.041
+   ],
+   "scales": {
+    "(1.0, 1.0)": 3,
+    "(0.6, 0.6)": 1
+   },
+   "layers": {
+    "0": 4
+   }
+  },
+  "BTH-пол": {
+   "count": 4,
+   "bbox": [
+    740375.259,
+    -509874.525,
+    776250.686,
+    -507628.185
+   ],
+   "scales": {
+    "(1.0, 1.0)": 4
+   },
+   "layers": {
+    "АГПТ": 4
+   }
+  },
+  "ЭДУ": {
+   "count": 4,
+   "bbox": [
+    841086.126,
+    -70892.604,
+    1266261.367,
+    -40815.884
+   ],
+   "scales": {
+    "(1.401399999999999, 1.401399999999999)": 2,
+    "(0.8408399999999998, 0.8408399999999998)": 2
+   },
+   "layers": {
+    "АГПТ": 4
+   }
+  },
+  "монтBTH": {
+   "count": 3,
+   "bbox": [
+    -1614377.469,
+    328893.428,
+    -1542617.533,
+    328893.428
+   ],
+   "scales": {
+    "(0.35, 0.35)": 3
+   },
+   "layers": {
+    "4.4.4._Сэндвич": 3
+   }
+  },
+  "кросс3эт": {
+   "count": 2,
+   "bbox": [
+    600048.322,
+    -508950.515,
+    618139.224,
+    -508950.515
+   ],
+   "scales": {
+    "(1.0, 1.0)": 2
+   },
+   "layers": {
+    "АГПТ": 2
+   }
+  },
+  "кросс4эт": {
+   "count": 2,
+   "bbox": [
+    471138.214,
+    -508950.515,
+    489229.116,
+    -508950.515
+   ],
+   "scales": {
+    "(1.0, 1.0)": 2
+   },
+   "layers": {
+    "АГПТ": 2
+   }
+  },
+  "BTK": {
+   "count": 2,
+   "bbox": [
+    740149.826,
+    -508778.841,
+    776025.254,
+    -508532.501
+   ],
+   "scales": {
+    "(1.0, 1.0)": 2
+   },
+   "layers": {
+    "АГПТ": 2
+   }
+  },
+  "книгохранилище": {
+   "count": 2,
+   "bbox": [
+    -271602.241,
+    -119644.724,
+    -253622.296,
+    -119644.724
+   ],
+   "scales": {
+    "(1.0, 1.0)": 2
+   },
+   "layers": {
+    "0": 2
+   }
+  },
+  "крос2эт": {
+   "count": 1,
+   "bbox": [
+    529347.703,
+    -505784.363,
+    529347.703,
+    -505784.363
+   ],
+   "scales": {
+    "(1.0, 1.0)": 1
+   },
+   "layers": {
+    "АГПТ": 1
+   }
+  },
+  "*U302": {
+   "count": 1,
+   "bbox": [
+    72920.078,
+    1226.389,
+    72920.078,
+    1226.389
+   ],
+   "scales": {
+    "(40.0, 40.0)": 1
+   },
+   "layers": {
+    "0": 1
+   }
+  },
+  "*U298": {
+   "count": 1,
+   "bbox": [
+    91010.98,
+    1226.389,
+    91010.98,
+    1226.389
+   ],
+   "scales": {
+    "(40.0, 40.0)": 1
+   },
+   "layers": {
+    "0": 1
+   }
+  },
+  "*U299": {
+   "count": 1,
+   "bbox": [
+    109101.882,
+    1226.389,
+    109101.882,
+    1226.389
+   ],
+   "scales": {
+    "(40.0, 40.0)": 1
+   },
+   "layers": {
+    "0": 1
+   }
+  },
+  "*U296": {
+   "count": 1,
+   "bbox": [
+    127192.785,
+    1226.389,
+    127192.785,
+    1226.389
+   ],
+   "scales": {
+    "(40.0, 40.0)": 1
+   },
+   "layers": {
+    "0": 1
+   }
+  },
+  "*U297": {
+   "count": 1,
+   "bbox": [
+    145283.687,
+    1226.389,
+    145283.687,
+    1226.389
+   ],
+   "scales": {
+    "(40.0, 40.0)": 1
+   },
+   "layers": {
+    "0": 1
+   }
+  },
+  "*U295": {
+   "count": 1,
+   "bbox": [
+    162770.916,
+    1226.389,
+    162770.916,
+    1226.389
+   ],
+   "scales": {
+    "(40.0, 40.0)": 1
+   },
+   "layers": {
+    "0": 1
+   }
+  },
+  "*U294": {
+   "count": 1,
+   "bbox": [
+    180750.86,
+    1226.389,
+    180750.86,
+    1226.389
+   ],
+   "scales": {
+    "(40.0, 40.0)": 1
+   },
+   "layers": {
+    "0": 1
+   }
+  }
+ },
+ "entity_counts": {
+  "INSERT": 106,
+  "ATTRIB": 126,
+  "SEQEND": 7,
+  "MTEXT": 77,
+  "LINE": 1500,
+  "HATCH": 21,
+  "SPLINE": 28,
+  "ARC": 196,
+  "MULTILEADER": 82,
+  "LWPOLYLINE": 272,
+  "DIMENSION": 11,
+  "ACAD_TABLE": 7,
+  "CIRCLE": 51
+ },
+ "layer_entity_counts": {
+  "BLOCKS:0": {
+   "LINE": 568,
+   "LWPOLYLINE": 381,
+   "MTEXT": 768,
+   "ATTDEF": 38,
+   "HATCH": 6,
+   "ARC": 75,
+   "ELLIPSE": 24,
+   "CIRCLE": 11,
+   "SPLINE": 2
+  },
+  "BLOCKS:STANDARD": {
+   "LINE": 55679,
+   "TEXT": 595,
+   "CIRCLE": 9,
+   "ARC": 15
+  },
+  "BLOCKS:5": {
+   "INSERT": 19
+  },
+  "BLOCKS:Формат": {
+   "LWPOLYLINE": 2,
+   "LINE": 7,
+   "TEXT": 3
+  },
+  "BLOCKS:Пожарка": {
+   "MTEXT": 3
+  },
+  "BLOCKS:АГПТ": {
+   "LWPOLYLINE": 41,
+   "CIRCLE": 4,
+   "MTEXT": 607,
+   "LINE": 931,
+   "INSERT": 503,
+   "HATCH": 11
+  },
+  "BLOCKS:RC-Таблицы": {
+   "MTEXT": 563,
+   "LINE": 161
+  },
+  "BLOCKS:Defpoints": {
+   "LINE": 44,
+   "POINT": 516
+  },
+  "BLOCKS:Меблировка": {
+   "LINE": 499
+  },
+  "BLOCKS:Общий02": {
+   "LINE": 78,
+   "ARC": 1,
+   "TEXT": 11,
+   "CIRCLE": 5
+  },
+  "BLOCKS:Общий01": {
+   "LINE": 118,
+   "TEXT": 64,
+   "CIRCLE": 31,
+   "HATCH": 7
+  },
+  "BLOCKS:Общий03": {
+   "LINE": 13,
+   "ARC": 1,
+   "TEXT": 7,
+   "CIRCLE": 5
+  },
+  "BLOCKS:Общий04": {
+   "LINE": 8,
+   "TEXT": 8,
+   "CIRCLE": 5
+  },
+  "BLOCKS:Текст_1_20": {
+   "HATCH": 4,
+   "ARC": 1
+  },
+  "BLOCKS:Растровая_поверхность": {
+   "HATCH": 26,
+   "LINE": 277
+  },
+  "BLOCKS:Стена": {
+   "HATCH": 233,
+   "LINE": 2620,
+   "ARC": 74
+  },
+  "BLOCKS:Оси": {
+   "HATCH": 7,
+   "TEXT": 42,
+   "LINE": 148
+  },
+  "BLOCKS:Стилевая_поверхн.": {
+   "HATCH": 4,
+   "LINE": 37
+  },
+  "BLOCKS:Текст_1_10": {
+   "CIRCLE": 36,
+   "TEXT": 36
+  },
+  "BLOCKS:Текст_1_50": {
+   "CIRCLE": 2,
+   "TEXT": 2
+  },
+  "BLOCKS:Горизонтали--MAJ": {
+   "CIRCLE": 110,
+   "LINE": 1864,
+   "ARC": 873,
+   "ELLIPSE": 25
+  },
+  "BLOCKS:Лестница": {
+   "LINE": 217,
+   "CIRCLE": 2
+  },
+  "BLOCKS:Балки__каркасы__пороги": {
+   "LINE": 4
+  },
+  "BLOCKS:Перекрытие_ж_бетон": {
+   "TEXT": 3
+  },
+  "BLOCKS:ПС": {
+   "LWPOLYLINE": 4,
+   "LINE": 7,
+   "CIRCLE": 2,
+   "HATCH": 1
+  },
+  "BLOCKS:размер КЛАДОЧНЫЙ2": {
+   "LWPOLYLINE": 1,
+   "LINE": 3
+  },
+  "BLOCKS:PDF _Сплошная заливка": {
+   "HATCH": 2
+  },
+  "BLOCKS:PDF _Геометрия": {
+   "LINE": 4,
+   "LWPOLYLINE": 74
+  },
+  "BLOCKS:®_КИРПИЧ_120": {
+   "LWPOLYLINE": 1,
+   "LINE": 2,
+   "ARC": 2
+  },
+  "BLOCKS:4.4.4._Сэндвич": {
+   "CIRCLE": 1,
+   "LWPOLYLINE": 1,
+   "MTEXT": 1
+  },
+  "BLOCKS:.": {
+   "HATCH": 3
+  },
+  "BLOCKS:shkl": {
+   "LWPOLYLINE": 10
+  },
+  "BLOCKS:DIP": {
+   "LWPOLYLINE": 410,
+   "ARC": 22
+  },
+  "BLOCKS:RC-Выноски": {
+   "MULTILEADER": 4
+  },
+  "BLOCKS:NOZZLE": {
+   "SOLID": 6,
+   "LINE": 10
+  },
+  "BLOCKS:SPRKDAT1": {
+   "ELLIPSE": 6
+  },
+  "BLOCKS:BORU": {
+   "CIRCLE": 2
+  },
+  "BLOCKS:SM_kelepçe": {
+   "LWPOLYLINE": 6,
+   "ARC": 25,
+   "LINE": 75
+  },
+  "BLOCKS:FM": {
+   "LINE": 83,
+   "ARC": 12,
+   "LWPOLYLINE": 8,
+   "CIRCLE": 8
+  },
+  "BLOCKS:Горизонтали--LBL": {
+   "LINE": 118,
+   "ARC": 88
+  },
+  "АГПТ": {
+   "INSERT": 79,
+   "MTEXT": 70,
+   "HATCH": 12,
+   "MULTILEADER": 82,
+   "LWPOLYLINE": 165,
+   "DIMENSION": 11,
+   "ACAD_TABLE": 7,
+   "LINE": 21,
+   "CIRCLE": 3
+  },
+  "0": {
+   "INSERT": 13,
+   "ATTRIB": 126,
+   "SEQEND": 7,
+   "LINE": 508,
+   "SPLINE": 28,
+   "ARC": 4,
+   "LWPOLYLINE": 36,
+   "CIRCLE": 16,
+   "HATCH": 4
+  },
+  "Общий01": {
+   "LINE": 2
+  },
+  "ось": {
+   "LINE": 52
+  },
+  "SM_kelepçe": {
+   "LINE": 444,
+   "ARC": 144,
+   "LWPOLYLINE": 24
+  },
+  "4.4.4._Сэндвич": {
+   "INSERT": 3,
+   "MTEXT": 7
+  },
+  "®_ЛЕСТНИЦА": {
+   "LWPOLYLINE": 3
+  },
+  "®_КИРПИЧ_120": {
+   "LINE": 141,
+   "LWPOLYLINE": 9,
+   "INSERT": 6
+  },
+  "shkl": {
+   "LWPOLYLINE": 3
+  },
+  "FM": {
+   "LINE": 332,
+   "ARC": 48,
+   "LWPOLYLINE": 32,
+   "CIRCLE": 32
+  },
+  "JAM NOVEC SYSTEM PIPING": {
+   "INSERT": 5
+  },
+  ".": {
+   "HATCH": 5
+  }
+ },
+ "text_styles_used": {
+  "СПДС|h=100.0|wf=None|layer=0": {
+   "count": 70,
+   "samples": [
+    "",
+    "",
+    ""
+   ]
+  },
+  "Архитектурный|h=100.0|wf=None|layer=0": {
+   "count": 56,
+   "samples": [
+    "",
+    "19",
+    ""
+   ]
+  },
+  "Архитектурный|h=160.0|wf=None|layer=АГПТ": {
+   "count": 21,
+   "samples": [
+    "{\\W0.6;5BGB3.1}",
+    "{\\W0.6;5BGB3.2}",
+    "{\\W0.7;5BTM2.3}"
+   ]
+  },
+  "Архитектурный|h=150.0|wf=None|layer=АГПТ": {
+   "count": 13,
+   "samples": [
+    "{\\Q-1;\\W0.7;\\T0.95;5BTH1.5}",
+    "{\\Q-1;\\W0.7;\\T0.95;5BTH1.1}",
+    "{\\Q-1;\\W0.7;\\T0.95;5BTK1.2}"
+   ]
+  },
+  "Архитектурный|h=96.0|wf=None|layer=АГПТ": {
+   "count": 11,
+   "samples": [
+    "{\\W0.6;7BGB1.1}",
+    "{\\W0.6;7BGB1.2}",
+    "{\\W0.7;7BTM3.3}"
+   ]
+  },
+  "GOST-2.304_Type-B_italic|h=150.0|wf=None|layer=АГПТ": {
+   "count": 7,
+   "samples": [
+    "Фрагмент плана на отметке +5.100. Помещение кроссовой",
+    "Фрагмент плана на отметке +9.300. Помещение кроссовой",
+    "Фрагмент плана на отметке +9.300. Помещение кроссовой"
+   ]
+  },
+  "GOST-2.304_Type-B_italic|h=112.5|wf=None|layer=АГПТ": {
+   "count": 7,
+   "samples": [
+    "{\\C0;21}",
+    "{\\C0;22}",
+    "{\\C0;23}"
+   ]
+  },
+  "ARIAL|h=100.0|wf=None|layer=4.4.4._Сэндвич": {
+   "count": 7,
+   "samples": [
+    "\\pxsm0.7,qc;{\\fArial|b0|i1|c204|p34;Фрагмент плана второго э",
+    "\\pxsm0.7,qc;{\\fArial|b0|i1|c204|p34;Фрагмент плана третьего ",
+    "\\pxsm0.7,qc;{\\fArial|b0|i1|c204|p34;Фрагмент плана третьего "
+   ]
+  },
+  "Архитектурный|h=70.0|wf=None|layer=АГПТ": {
+   "count": 4,
+   "samples": [
+    "Крепление трубопровода ",
+    "Крепление трубопровода ",
+    "Крепление трубопровода "
+   ]
+  },
+  "Архитектурный|h=90.0|wf=None|layer=АГПТ": {
+   "count": 4,
+   "samples": [
+    "{\\Q-1;\\W0.7;\\T0.95;7BTH1.1}",
+    "{\\Q-1;\\W0.7;\\T0.95;7BTH1.3}",
+    "{\\Q-1;\\W0.7;\\T0.95;7BTH1.2}"
+   ]
+  },
+  "GOST-2.304_Type-B_italic|h=100.0|wf=None|layer=АГПТ": {
+   "count": 3,
+   "samples": [
+    "{\\fISOCPEUR|b0|i1|c204|p34;\\C0;СС1}",
+    "{\\fISOCPEUR|b0|i1|c204|p34;\\C0;СС1}",
+    "{\\fISOCPEUR|b0|i1|c204|p34;\\C0;СС1}"
+   ]
+  }
+ },
+ "rect_candidates": [
+  {
+   "bbox": [
+    86020.3,
+    6732.77,
+    90232.3,
+    6843.65
+   ],
+   "w": 4212.0,
+   "h": 110.87,
+   "layer": "shkl",
+   "color": "     0",
+   "lineweight": "    30",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    122202.1,
+    6732.77,
+    126414.1,
+    6843.65
+   ],
+   "w": 4212.0,
+   "h": 110.87,
+   "layer": "shkl",
+   "color": "     0",
+   "lineweight": "    30",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    157780.23,
+    6732.77,
+    161992.23,
+    6843.65
+   ],
+   "w": 4212.0,
+   "h": 110.87,
+   "layer": "shkl",
+   "color": "     0",
+   "lineweight": "    30",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    61796.16,
+    6402.19,
+    62470.68,
+    6825.89
+   ],
+   "w": 674.53,
+   "h": 423.7,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    97977.96,
+    6402.19,
+    98652.49,
+    6825.89
+   ],
+   "w": 674.53,
+   "h": 423.7,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    79887.06,
+    6402.19,
+    80561.59,
+    6825.89
+   ],
+   "w": 674.53,
+   "h": 423.7,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    133579.78,
+    6155.85,
+    134254.31,
+    6579.55
+   ],
+   "w": 674.53,
+   "h": 423.7,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    115468.29,
+    6155.85,
+    116142.82,
+    6579.55
+   ],
+   "w": 674.53,
+   "h": 423.7,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    68584.41,
+    4960.94,
+    68833.79,
+    5587.72
+   ],
+   "w": 249.38,
+   "h": 626.78,
+   "layer": "0",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    104766.21,
+    4960.94,
+    105015.59,
+    5587.72
+   ],
+   "w": 249.38,
+   "h": 626.78,
+   "layer": "0",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    140948.02,
+    4960.94,
+    141197.4,
+    5587.72
+   ],
+   "w": 249.38,
+   "h": 626.78,
+   "layer": "0",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    175215.25,
+    4381.8,
+    175464.63,
+    5008.58
+   ],
+   "w": 249.38,
+   "h": 626.78,
+   "layer": "0",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    151624.87,
+    5096.77,
+    152029.59,
+    5350.99
+   ],
+   "w": 404.72,
+   "h": 254.22,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    169336.66,
+    5099.51,
+    169741.38,
+    5353.73
+   ],
+   "w": 404.72,
+   "h": 254.22,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    80224.32,
+    6402.19,
+    80561.59,
+    6614.04
+   ],
+   "w": 337.26,
+   "h": 211.85,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": "    30",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    115805.55,
+    6155.85,
+    116142.82,
+    6367.7
+   ],
+   "w": 337.26,
+   "h": 211.85,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": "    30",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    133917.04,
+    6155.85,
+    134254.31,
+    6367.7
+   ],
+   "w": 337.26,
+   "h": 211.85,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": "    30",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    72920.08,
+    12706.39,
+    73120.08,
+    12906.39
+   ],
+   "w": 200.0,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    91010.98,
+    12706.39,
+    91210.98,
+    12906.39
+   ],
+   "w": 200.0,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    109101.88,
+    12706.39,
+    109301.88,
+    12906.39
+   ],
+   "w": 200.0,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    127192.78,
+    12706.39,
+    127392.78,
+    12906.39
+   ],
+   "w": 200.0,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    145283.69,
+    12706.39,
+    145483.69,
+    12906.39
+   ],
+   "w": 200.0,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    162770.92,
+    12706.39,
+    162970.92,
+    12906.39
+   ],
+   "w": 200.0,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    180750.86,
+    12706.39,
+    180950.86,
+    12906.39
+   ],
+   "w": 200.0,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    151827.23,
+    5096.77,
+    152029.59,
+    5223.88
+   ],
+   "w": 202.36,
+   "h": 127.11,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": "    30",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    169539.02,
+    5099.51,
+    169741.38,
+    5226.62
+   ],
+   "w": 202.36,
+   "h": 127.11,
+   "layer": "АГПТ",
+   "color": "     1",
+   "lineweight": "    30",
+   "const_width": 0.0
+  }
+ ],
+ "tables_acad": 7
+}

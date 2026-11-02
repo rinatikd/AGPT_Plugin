@@ -1,0 +1,1511 @@
+{
+ "file": "Планы по МГИМО от Блок 1 - АГПТ пример вторая часть для меня.dxf",
+ "size_bytes": 15367082,
+ "header": {
+  "$ACADVER": [
+   [
+    1,
+    "AC1032"
+   ]
+  ],
+  "$DWGCODEPAGE": [
+   [
+    3,
+    "ANSI_1251"
+   ]
+  ],
+  "$EXTMIN": [
+   [
+    10,
+    "2020.485693684808"
+   ],
+   [
+    20,
+    "1313.036290377029"
+   ],
+   [
+    30,
+    "0.0"
+   ]
+  ],
+  "$EXTMAX": [
+   [
+    10,
+    "424619.9198831767"
+   ],
+   [
+    20,
+    "117845.5079936961"
+   ],
+   [
+    30,
+    "0.0"
+   ]
+  ],
+  "$LIMMIN": [
+   [
+    10,
+    "0.0"
+   ],
+   [
+    20,
+    "0.0"
+   ]
+  ],
+  "$LIMMAX": [
+   [
+    10,
+    "420.0"
+   ],
+   [
+    20,
+    "297.0"
+   ]
+  ],
+  "$LTSCALE": [
+   [
+    40,
+    "1.0"
+   ]
+  ],
+  "$TEXTSTYLE": [
+   [
+    7,
+    "Standard"
+   ]
+  ],
+  "$DIMSCALE": [
+   [
+    40,
+    "1.0"
+   ]
+  ],
+  "$DIMSTYLE": [
+   [
+    2,
+    "ISO-25"
+   ]
+  ],
+  "$MEASUREMENT": [
+   [
+    70,
+    "     1"
+   ]
+  ],
+  "$LWDISPLAY": [
+   [
+    290,
+    "     0"
+   ]
+  ],
+  "$INSUNITS": [
+   [
+    70,
+    "     4"
+   ]
+  ]
+ },
+ "styles": [
+  {
+   "name": "Standard",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "Аннотативный",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "ARIAL",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "GOST-2.304_Type-B",
+   "font": "GOST_Common.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "GOST-2.304_Type-B_italic",
+   "font": "GOST_Common Italic.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "АР",
+   "font": "isocpeui.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "Архитектурный",
+   "font": "isocpeui.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "СПДС",
+   "font": "isocpeur.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 0.9,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "RubezhCAD",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 0.8,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "Проект",
+   "font": "isocpeui.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "style1",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "Standard2",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "PDF Arial",
+   "font": "arial.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "Стиль ВК",
+   "font": "isocpeui.ttf",
+   "bigfont": "",
+   "height": 250.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  },
+  {
+   "name": "PDF Courier New",
+   "font": "cour.ttf",
+   "bigfont": "",
+   "height": 0.0,
+   "width_factor": 1.0,
+   "oblique": 0.0,
+   "flags": "     0"
+  }
+ ],
+ "layers": [
+  {
+   "name": "0",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "STANDARD",
+   "color": "    18",
+   "linetype": "Continuous",
+   "lineweight": "    25",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "АГПТ",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "4.4.4._Сэндвич",
+   "color": "   252",
+   "linetype": "Continuous",
+   "lineweight": "    53",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Defpoints",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": "     0"
+  },
+  {
+   "name": "АСПТ",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "RC-Таблицы",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -1",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "013",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    18",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "О_Формат",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Формат",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    20",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "Пожарка",
+   "color": "     1",
+   "linetype": "Continuous",
+   "lineweight": "    -3",
+   "flags": "     0",
+   "plot": null
+  },
+  {
+   "name": "5",
+   "color": "     7",
+   "linetype": "Continuous",
+   "lineweight": "    13",
+   "flags": "     0",
+   "plot": null
+  }
+ ],
+ "linetypes": [
+  {
+   "name": "ByBlock",
+   "desc": "",
+   "pattern": []
+  },
+  {
+   "name": "ByLayer",
+   "desc": "",
+   "pattern": []
+  },
+  {
+   "name": "Continuous",
+   "desc": "Solid line",
+   "pattern": []
+  },
+  {
+   "name": "DASHED",
+   "desc": "Штриховая __ __ __ __ __ __ __ __ __",
+   "pattern": [
+    5.0,
+    -2.0,
+    0.0
+   ]
+  },
+  {
+   "name": "штриховая",
+   "desc": "Штриховая __ __ __ __ __ __ __ __ __ __ __ __ _",
+   "pattern": [
+    0.5,
+    -0.25
+   ]
+  }
+ ],
+ "dimstyles": [
+  {
+   "name": "Standard",
+   "DIMSCALE": null,
+   "DIMASZ": null,
+   "DIMEXO": null,
+   "DIMEXE": null,
+   "DIMTXT": null,
+   "DIMGAP": null,
+   "DIMTXSTY": "11",
+   "DIMBLK": null
+  },
+  {
+   "name": "Аннотативный",
+   "DIMSCALE": 0.0,
+   "DIMASZ": 2.5,
+   "DIMEXO": 0.625,
+   "DIMEXE": 1.25,
+   "DIMTXT": 2.5,
+   "DIMGAP": 0.625,
+   "DIMTXSTY": "11",
+   "DIMBLK": null
+  },
+  {
+   "name": "ISO-25",
+   "DIMSCALE": null,
+   "DIMASZ": 2.5,
+   "DIMEXO": 0.625,
+   "DIMEXE": 1.25,
+   "DIMTXT": 2.5,
+   "DIMGAP": 0.625,
+   "DIMTXSTY": "11",
+   "DIMBLK": null
+  }
+ ],
+ "blocks": {
+  "_OBLIQUE": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -0.5,
+    -0.5,
+    0.5,
+    0.5
+   ],
+   "entities": {
+    "LINE": 1
+   },
+   "attdefs": []
+  },
+  "Ramka": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -205.0,
+    -5.0,
+    5.0,
+    292.0
+   ],
+   "entities": {
+    "LWPOLYLINE": 17,
+    "MTEXT": 10,
+    "ATTDEF": 2,
+    "LINE": 2915,
+    "TEXT": 31,
+    "INSERT": 1
+   },
+   "attdefs": [
+    {
+     "tag": "ЛИСТ_второй",
+     "prompt": "Лист второй и далее",
+     "default": "2",
+     "height": 2.5,
+     "style": "СПДС",
+     "pos": [
+      -5.875,
+      3.75
+     ]
+    },
+    {
+     "tag": "ШИФР_ПРОЕКТА_ЛИСТ2",
+     "prompt": "",
+     "default": "Шифр проекта",
+     "height": 2.5,
+     "style": "СПДС",
+     "pos": [
+      -76.375,
+      6.249999999999999
+     ]
+    }
+   ]
+  },
+  "РамкаА3": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    62249.415,
+    201355.452,
+    82395.915,
+    215702.452
+   ],
+   "entities": {
+    "LWPOLYLINE": 2,
+    "LINE": 7,
+    "TEXT": 3
+   },
+   "attdefs": []
+  },
+  "формул": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -385383.469,
+    24498.042,
+    -383746.616,
+    24685.179
+   ],
+   "entities": {
+    "MTEXT": 3
+   },
+   "attdefs": []
+  },
+  "форм1": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    572608.823,
+    538502.379,
+    575920.075,
+    539027.379
+   ],
+   "entities": {
+    "LWPOLYLINE": 5,
+    "MTEXT": 10
+   },
+   "attdefs": []
+  },
+  "насадок": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    4552758.719,
+    918645.28,
+    4552927.115,
+    918816.872
+   ],
+   "entities": {
+    "LWPOLYLINE": 2,
+    "CIRCLE": 3
+   },
+   "attdefs": []
+  },
+  "щит-аксон": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    -611086.008,
+    556432.008,
+    -606837.454,
+    566116.576
+   ],
+   "entities": {
+    "LWPOLYLINE": 5
+   },
+   "attdefs": []
+  },
+  "подпись Громов": {
+   "base": [
+    0.0,
+    0.0
+   ],
+   "bbox": [
+    1.789,
+    -0.146,
+    13.602,
+    4.827
+   ],
+   "entities": {
+    "LINE": 183
+   },
+   "attdefs": []
+  }
+ },
+ "inserts": {
+  "насадок": {
+   "count": 14,
+   "bbox": [
+    -3144196.024,
+    -568995.024,
+    3308239.161,
+    719249.358
+   ],
+   "scales": {
+    "(0.7, 0.7)": 14
+   },
+   "layers": {
+    "АГПТ": 14
+   }
+  },
+  "*U86": {
+   "count": 10,
+   "bbox": [
+    18620.486,
+    70543.977,
+    176691.985,
+    70675.058
+   ],
+   "scales": {
+    "(40.0, 40.0)": 10
+   },
+   "layers": {
+    "0": 10
+   }
+  },
+  "формул": {
+   "count": 6,
+   "bbox": [
+    495958.271,
+    45511.581,
+    593819.462,
+    46122.964
+   ],
+   "scales": {
+    "(1.204306367035182, 1.204306367035182)": 6
+   },
+   "layers": {
+    "АГПТ": 6
+   }
+  },
+  "РамкаА3": {
+   "count": 5,
+   "bbox": [
+    -49606.067,
+    -165681.108,
+    20474.37,
+    -165681.108
+   ],
+   "scales": {
+    "(0.8293499999999999, 0.8293499999999999)": 5
+   },
+   "layers": {
+    "0": 5
+   }
+  },
+  "*U87": {
+   "count": 3,
+   "bbox": [
+    405824.828,
+    106165.508,
+    424419.92,
+    106165.508
+   ],
+   "scales": {
+    "(40.0, 40.0)": 3
+   },
+   "layers": {
+    "0": 3
+   }
+  },
+  "щит-аксон": {
+   "count": 1,
+   "bbox": [
+    354472.596,
+    -205053.532,
+    354472.596,
+    -205053.532
+   ],
+   "scales": {
+    "(0.5, 0.5)": 1
+   },
+   "layers": {
+    "АГПТ": 1
+   }
+  },
+  "форм1": {
+   "count": 1,
+   "bbox": [
+    -652929.058,
+    -669978.013,
+    -652929.058,
+    -669978.013
+   ],
+   "scales": {
+    "(1.39207780143432, 1.39207780143432)": 1
+   },
+   "layers": {
+    "0": 1
+   }
+  },
+  "подпись Громов": {
+   "count": 1,
+   "bbox": [
+    11565.539,
+    1760.374,
+    11565.539,
+    1760.374
+   ],
+   "scales": {
+    "(48.767951232, 48.767951232)": 1
+   },
+   "layers": {
+    "5": 1
+   }
+  }
+ },
+ "entity_counts": {
+  "INSERT": 41,
+  "ATTRIB": 234,
+  "SEQEND": 13,
+  "MTEXT": 120,
+  "ACAD_TABLE": 27,
+  "LWPOLYLINE": 86,
+  "TEXT": 85,
+  "LINE": 11989,
+  "DIMENSION": 64,
+  "MULTILEADER": 65
+ },
+ "layer_entity_counts": {
+  "BLOCKS:0": {
+   "LINE": 808,
+   "LWPOLYLINE": 56,
+   "MTEXT": 1166,
+   "ATTDEF": 6
+  },
+  "BLOCKS:STANDARD": {
+   "LINE": 8745,
+   "TEXT": 93
+  },
+  "BLOCKS:5": {
+   "INSERT": 3
+  },
+  "BLOCKS:Формат": {
+   "LWPOLYLINE": 2,
+   "LINE": 7,
+   "TEXT": 3
+  },
+  "BLOCKS:Пожарка": {
+   "MTEXT": 3
+  },
+  "BLOCKS:АГПТ": {
+   "LWPOLYLINE": 7,
+   "CIRCLE": 3,
+   "MTEXT": 260,
+   "LINE": 532,
+   "INSERT": 256
+  },
+  "BLOCKS:RC-Таблицы": {
+   "MTEXT": 1537,
+   "LINE": 440
+  },
+  "BLOCKS:Defpoints": {
+   "LINE": 58,
+   "POINT": 384
+  },
+  "0": {
+   "INSERT": 19,
+   "ATTRIB": 234,
+   "SEQEND": 13,
+   "MTEXT": 6,
+   "TEXT": 5,
+   "ACAD_TABLE": 19,
+   "LWPOLYLINE": 1
+  },
+  "АГПТ": {
+   "MTEXT": 90,
+   "ACAD_TABLE": 2,
+   "INSERT": 21,
+   "LWPOLYLINE": 31,
+   "DIMENSION": 64,
+   "MULTILEADER": 65,
+   "LINE": 1
+  },
+  "RC-Таблицы": {
+   "ACAD_TABLE": 6,
+   "MTEXT": 2
+  },
+  "О_Формат": {
+   "LWPOLYLINE": 50,
+   "TEXT": 26
+  },
+  "013": {
+   "LWPOLYLINE": 4,
+   "LINE": 4
+  },
+  "АСПТ": {
+   "MTEXT": 12
+  },
+  "4.4.4._Сэндвич": {
+   "MTEXT": 10
+  },
+  "STANDARD": {
+   "LINE": 11984,
+   "TEXT": 54
+  },
+  "5": {
+   "INSERT": 1
+  }
+ },
+ "text_styles_used": {
+  "СПДС|h=100.0|wf=None|layer=0": {
+   "count": 130,
+   "samples": [
+    "",
+    "",
+    ""
+   ]
+  },
+  "Архитектурный|h=100.0|wf=None|layer=0": {
+   "count": 102,
+   "samples": [
+    "РП",
+    "1",
+    ""
+   ]
+  },
+  "Архитектурный|h=100.0|wf=None|layer=АГПТ": {
+   "count": 64,
+   "samples": [
+    "{\\C0;1}",
+    "{\\C0;2}",
+    "{\\C0;3}"
+   ]
+  },
+  "style1|h=105.32745|wf=None|layer=О_Формат": {
+   "count": 26,
+   "samples": [
+    "Изм.",
+    "Кол.",
+    "Лист"
+   ]
+  },
+  "GOST-2.304_Type-B_italic|h=112.5|wf=None|layer=АГПТ": {
+   "count": 15,
+   "samples": [
+    "{\\C0;31}",
+    "{\\C0;32}",
+    "{\\C0;33}"
+   ]
+  },
+  "ARIAL|h=112.5|wf=None|layer=4.4.4._Сэндвич": {
+   "count": 10,
+   "samples": [
+    "\\pxqc;{\\fArial|b0|i1|c204|p34;Общие данные \\P(окончание)}",
+    "\\pxqc;{\\fArial|b0|i1|c204|p34;Краткие техническое описание м",
+    "\\pxqc;{\\fArial|b0|i1|c204|p34;Общие данные \\P(продолжение)}"
+   ]
+  },
+  "Проект|h=150.0|wf=None|layer=АСПТ": {
+   "count": 7,
+   "samples": [
+    "\\pxb0.25,a0.25,ql;^IСистема построена на базе Адресно-аналог",
+    "\\A1;\\pxb0.25,a0.25;{\\H0.99999x;  \\P\\P\\P\\P\\P\\P Расчетная схем",
+    "\\A1;\\pxb0.25,a0.25;3.2 Первый этаж\\P\\P{\\L\\P}\\P\\P\\P\\P{\\LПроме"
+   ]
+  },
+  "Standard2|h=82.93499999999997|wf=None|layer=0": {
+   "count": 5,
+   "samples": [
+    "Формат А3 ",
+    "Формат А3 ",
+    "Формат А3 "
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8047505691053579|layer=STANDARD": {
+   "count": 5,
+   "samples": [
+    "05.25",
+    "05.25",
+    "05.25"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.5574423375193877|layer=STANDARD": {
+   "count": 5,
+   "samples": [
+    "25/р-34-ПР-АГПТ.СО",
+    "25/р-34-ПР-АГПТ.СО",
+    "25/р-34-ПР-АГПТ.СО"
+   ]
+  },
+  "GOST-2.304_Type-B_italic|h=100.0|wf=None|layer=АГПТ": {
+   "count": 4,
+   "samples": [
+    "\\pxi-3,l3,qc,t3;Задания в смежные разделы",
+    "\\pxi-3,l3,qc,t3;Задание на электроснабжение\\P(начало)",
+    "\\pxi-3,l3,qc,t3;Задания на электроснабжение\\P(окончание)"
+   ]
+  },
+  "ARIAL|h=103.66875|wf=None|layer=АГПТ": {
+   "count": 4,
+   "samples": [
+    "\\pxqc;{\\C0;2}",
+    "\\pxqc;{\\C0;3}",
+    "\\pxqc;{\\C0;4}"
+   ]
+  },
+  "ARIAL|h=105.32745|wf=None|layer=0": {
+   "count": 4,
+   "samples": [
+    "10.25",
+    "10.25",
+    "10.25"
+   ]
+  },
+  "ARIAL|h=110.4|wf=None|layer=0": {
+   "count": 2,
+   "samples": [
+    "27",
+    "\\A1;\\pxql;{\\fArial|b0|i1|c204|p34;\\C0;Спецификация оборудова"
+   ]
+  },
+  "Проект|h=100.0|wf=None|layer=АСПТ": {
+   "count": 2,
+   "samples": [
+    "ВЕДОМОСТЬ РАБОЧИХ ЧЕРТЕЖЕЙ ОСНОВНОГО КОМПЛЕКТА ",
+    "ВЕДОМОСТЬ ССЫЛОЧНЫХ И ПРИЛАГАЕМЫХ ДОКУМЕНТОВ"
+   ]
+  },
+  "ARIAL|h=110.4|wf=None|layer=АГПТ": {
+   "count": 2,
+   "samples": [
+    "\\pxqc;{\\fArial|b0|i1|c204|p34;\\C0;1}",
+    "\\pxqc;{\\fArial|b0|i1|c204|p34;\\C0;5}"
+   ]
+  },
+  "GOST-2.304_Type-B_italic|h=150.0|wf=None|layer=АГПТ": {
+   "count": 1,
+   "samples": [
+    "Задание в раздел АР\\P\\pxi-3,l3,t3;1.^IПредусмотреть во всех "
+   ]
+  },
+  "Проект|h=140.0|wf=None|layer=АСПТ": {
+   "count": 1,
+   "samples": [
+    "\\pxql;{\\LОбщие указания\\P\\pi-3,l4,t4;}1.^I{\\LОбщие данные}\\P"
+   ]
+  },
+  "Архитектурный|h=110.4|wf=None|layer=0": {
+   "count": 1,
+   "samples": [
+    "1"
+   ]
+  },
+  "Архитектурный|h=135.0|wf=None|layer=RC-Таблицы": {
+   "count": 1,
+   "samples": [
+    "1. Предусмотреть электроснабжение следующих электроприемнико"
+   ]
+  },
+  "АР|h=112.97286|wf=None|layer=RC-Таблицы": {
+   "count": 1,
+   "samples": [
+    "2. Предусмотреть заземление всех металлических нетоковедущих"
+   ]
+  },
+  "Стиль ВК|h=149.9993627409575|wf=None|layer=АСПТ": {
+   "count": 1,
+   "samples": [
+    "\\A1;\\pxb0.25,a0.25;4.^I{\\LКСИД - клапан сброса избыточного д"
+   ]
+  },
+  "GOST-2.304_Type-B_italic|h=149.9993627409575|wf=None|layer=АСПТ": {
+   "count": 1,
+   "samples": [
+    "{\\fISOCPEUR|b0|i1|c204|p34;\\C0;\\PМПТГ «Proffex » (66-**-**)\\"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8021247067046502|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Листов"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8009556443936016|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Стадия"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.7994367041200419|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Лист"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.7973685809784908|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Изм."
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.801424906256083|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Кол.уч."
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.7994367041194028|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Лист"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8019479653103964|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "№док."
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.7984050571359624|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Подп."
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8025896154679257|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Дата"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.7989476156922027|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "РП"
+   ]
+  },
+  "ARIAL|h=110.4|wf=0.8001263931978284|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "ТОО \"КазНИПИ энергетики и связи\" "
+   ]
+  },
+  "ARIAL|h=110.4|wf=0.7952550570243374|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    " ГСЛ №02913                               "
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.7973177941055157|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "ГАП"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.795756229953121|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "ГИП"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8041939009342801|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Проверил"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.799827709978493|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Выполнил"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8019323328301974|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Н. контроль"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8022896533758119|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "«Строительство здания для филиала Московского государственно"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8010422516006327|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "института международных отношений в городе Астана»"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8027761859279124|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Блок 1"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8043390398407566|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Карашулаков"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8040533802607537|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Туребаев"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.8035223653840784|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Мирзакулов"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.803350198489964|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Мырзагалиев"
+   ]
+  },
+  "ARIAL|h=120.0|wf=0.7998635976130024|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Громов С.Ф.  "
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7187686628984468|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Согласовано"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7151501246790327|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Раздел АР"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7137494531547678|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Раздел ГП"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7144537656960017|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Раздел КЖ"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7153040010182867|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Раздел ВК"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7146484915272057|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Раздел ОВ"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7147010483300948|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Раздел ЭМ"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7163786848072562|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Раздел СС"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7146560169497161|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Раздел ТХ"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7176245453776539|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Жиембаева"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7177345543605945|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Урдабаев"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7173521582544521|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Токтаулова"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7181598570007554|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Карашулаков"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.8033501984898986|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Мырзагалиев"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7194437163238308|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Даирова"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7142406786462919|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Раздел АПТ"
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7169979102750461|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Громов С."
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7172751223182771|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Кожахметова "
+   ]
+  },
+  "ARIAL|h=101.0625|wf=0.7153357347919971|layer=STANDARD": {
+   "count": 1,
+   "samples": [
+    "Мұратұлы"
+   ]
+  },
+  "STANDARD|h=84.0|wf=None|layer=0": {
+   "count": 1,
+   "samples": [
+    "\\pxi4;{\\fISOCPEUR|b0|i1|c204|p34;       Принятые в проекте р"
+   ]
+  }
+ },
+ "rect_candidates": [
+  {
+   "bbox": [
+    2820.49,
+    70675.06,
+    10951.9,
+    72171.07
+   ],
+   "w": 8131.42,
+   "h": 1496.02,
+   "layer": "0",
+   "color": null,
+   "lineweight": null,
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    28247.53,
+    1520.37,
+    36041.76,
+    2152.34
+   ],
+   "w": 7794.23,
+   "h": 631.96,
+   "layer": "013",
+   "color": null,
+   "lineweight": "    35",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    45626.44,
+    1520.37,
+    53420.67,
+    2152.34
+   ],
+   "w": 7794.23,
+   "h": 631.96,
+   "layer": "013",
+   "color": null,
+   "lineweight": "    35",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    63303.05,
+    1520.37,
+    71097.28,
+    2152.34
+   ],
+   "w": 7794.23,
+   "h": 631.96,
+   "layer": "013",
+   "color": null,
+   "lineweight": "    35",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    80807.85,
+    1520.37,
+    88602.08,
+    2152.34
+   ],
+   "w": 7794.23,
+   "h": 631.96,
+   "layer": "013",
+   "color": null,
+   "lineweight": "    35",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    18521.65,
+    13004.38,
+    18728.99,
+    13211.72
+   ],
+   "w": 207.34,
+   "h": 207.34,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    36041.76,
+    13004.38,
+    36249.09,
+    13211.72
+   ],
+   "w": 207.34,
+   "h": 207.34,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    53420.67,
+    13004.38,
+    53628.01,
+    13211.72
+   ],
+   "w": 207.34,
+   "h": 207.34,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    71097.28,
+    13004.38,
+    71304.62,
+    13211.72
+   ],
+   "w": 207.34,
+   "h": 207.34,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    88602.08,
+    13004.38,
+    88809.42,
+    13211.72
+   ],
+   "w": 207.34,
+   "h": 207.34,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    18613.15,
+    82155.06,
+    18820.49,
+    82355.06
+   ],
+   "w": 207.34,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    36176.65,
+    82155.06,
+    36383.99,
+    82355.06
+   ],
+   "w": 207.34,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    53740.15,
+    82155.06,
+    53947.49,
+    82355.06
+   ],
+   "w": 207.34,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    71303.65,
+    82155.06,
+    71510.99,
+    82355.06
+   ],
+   "w": 207.34,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    88867.15,
+    82155.06,
+    89074.49,
+    82355.06
+   ],
+   "w": 207.34,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    106430.65,
+    82155.06,
+    106637.99,
+    82355.06
+   ],
+   "w": 207.34,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    123994.15,
+    82111.36,
+    124201.49,
+    82311.36
+   ],
+   "w": 207.34,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    159121.15,
+    82023.98,
+    159328.48,
+    82223.98
+   ],
+   "w": 207.34,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    176684.65,
+    82023.98,
+    176891.98,
+    82223.98
+   ],
+   "w": 207.34,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  },
+  {
+   "bbox": [
+    141557.65,
+    82067.67,
+    141764.98,
+    82267.67
+   ],
+   "w": 207.34,
+   "h": 200.0,
+   "layer": "АГПТ",
+   "color": null,
+   "lineweight": "    15",
+   "const_width": 0.0
+  }
+ ],
+ "tables_acad": 27
+}
