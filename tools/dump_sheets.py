@@ -15,8 +15,10 @@ dump_sheets.py — раскладывает содержимое DXF-этало�
 Позиции даны в миллиметрах БУМАГИ (смещение от левого нижнего угла листа / масштаб).
 
 Использование:
-    python dump_sheets.py <file.dxf> [ещё.dxf ...] -o sheets_dump
+    python dump_sheets.py <file.dxf> [ещё.dxf ...] -o sheets_dump [--text-len 4000]
 Результат: sheets_dump/<имя>.sheets.json
+По умолчанию длина текста одного примитива ограничена 200 символами; для чтения методики и
+пояснений на листах «Общие данные» задайте --text-len 4000.
 """
 import sys, os, json, argparse
 from collections import defaultdict, Counter
@@ -72,6 +74,8 @@ def main():
     ap.add_argument("files", nargs="+")
     ap.add_argument("-o", "--out", default="sheets_dump")
     ap.add_argument("--max-texts", type=int, default=250)
+    ap.add_argument("--text-len", type=int, default=200,
+                    help="максимальная длина текста одного примитива (по умолчанию 200)")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
 
@@ -107,7 +111,7 @@ def main():
                     elif typ in ("TEXT", "MTEXT", "ATTRIB"):
                         pending.append((typ, lay, x, y, {"s": first(d, 7), "h": fnum(d, 40),
                                                          "wf": fnum(d, 41) if typ != "MTEXT" else None,
-                                                         "txt": text_of(d)[:200]}))
+                                                         "txt": text_of(d)[:a.text_len]}))
                     elif typ == "ACAD_TABLE":
                         pending.append((typ, lay, x, y, {
                             "rows": first(d, 91), "cols": first(d, 92),
@@ -115,7 +119,7 @@ def main():
                             "col_w": [float(v) for v in d.get(142, [])],
                             "cells": (d.get(302, []) + d.get(1, []))[:500]}))
                     elif typ == "MULTILEADER":
-                        pending.append((typ, lay, x, y, {"txt": "".join(d.get(304, []))[:200]}))
+                        pending.append((typ, lay, x, y, {"txt": "".join(d.get(304, []))[:a.text_len]}))
                     elif typ == "LWPOLYLINE":
                         pending.append((typ, lay, x, y, None))
                     else:
