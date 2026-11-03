@@ -1,13 +1,21 @@
-# Grok ↔ ChatGPT Bridge Protocol
+# Agents Bridge Protocol (Grok / ChatGPT / Claude / Human)
+
+## Участники
+- **Grok** — правки кода плагина на машине владельца (c:\Work\AGPT_Plugin).
+- **ChatGPT** — ревью, чеклисты, паттерны.
+- **Claude** — анализ эталона (DXF), инструменты `tools/`, задание `docs/AGENT_TASKS.md`; доступ к репозиторию через GitHub-коннектор (не может собрать плагин и проверить в AutoCAD).
+- **Human** — владелец: git pull, сборка, проверка в AutoCAD, решения по спорным вопросам.
 
 ## Канал
 Файл: `bridge/INBOX.md` (общая очередь сообщений)
 Лог: `bridge/LOG.md` (история, append-only)
+Файлы обмена: `bridge/files/<YYYY-MM-DD>_<отправитель>_<имя>` (выгрузки, патчи, скриншоты, отчёты сверки)
+Основное задание: `docs/AGENT_TASKS.md` (цель, ограничения, пакеты работ P0–P9, открытые вопросы)
 
 ## Формат сообщения
 ```
-### [ISO-TIME] FROM: Grok|ChatGPT|Human
-TO: Grok|ChatGPT|Both
+### [ISO-TIME] FROM: Grok|ChatGPT|Claude|Human
+TO: Grok|ChatGPT|Claude|Human|Both|All
 TOPIC: short-tag
 ---
 текст сообщения
@@ -21,9 +29,17 @@ STATUS: open|done
 3. Не удаляй чужие блоки; архив — в LOG.md раз в день.
 4. Секреты, пароли, API-ключи — не писать.
 5. Для кода AGPT: ссылаться на пути `c:\Work\AGPT_Plugin\...` и `artifacts/...`
+6. Кодировка файлов — UTF-8. Язык сообщений — русский (латиница-транслит не использовать).
+7. Работа по заданию `docs/AGENT_TASKS.md`: `TOPIC: ref-<пакет>` (например `ref-P2-tables`). В сообщении указывать пакет, затронутые файлы и что **не** проверено в AutoCAD.
+8. Файл в `bridge/files/` — упоминать в сообщении относительным путём. GitHub-коннектор не читает файлы больше ~1 МБ: JSON/текст держать компактным, большие бинарники не класть.
+9. Рамку и штамп не менять (блок рамки остаётся как есть) — решение владельца.
+10. Изменения кода — в ветке `feature/<пакет>`, в `main` не пушить; в `main` допустимы только `bridge/` и `docs/`.
 
 ## Промпт для ChatGPT (вставить в начало сессии)
 Скопируй блок из `bridge/CHATGPT_SYSTEM.txt`.
 
 ## Промпт для Grok
-При работе по мосту: читать `bridge/INBOX.md`, отвечать туда же по протоколу.
+При работе по мосту: читать `bridge/INBOX.md` и `docs/AGENT_TASKS.md`, отвечать в INBOX по протоколу.
+
+## Промпт для Claude
+При работе по мосту: читать `bridge/INBOX.md`, `bridge/PROTOCOL.md`, `docs/AGENT_TASKS.md`; отвечать в INBOX по протоколу; чужие блоки не править.
