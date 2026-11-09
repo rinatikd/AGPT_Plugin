@@ -1,0 +1,314 @@
+[
+ {
+  "file": "2__sheet06.plan.json",
+  "tag": "2",
+  "sheet": 6,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 24,
+  "title": "",
+  "kb": 70
+ },
+ {
+  "file": "2__sheet09.plan.json",
+  "tag": "2",
+  "sheet": 9,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 13,
+  "title": "",
+  "kb": 47
+ },
+ {
+  "file": "2__sheet10.plan.json",
+  "tag": "2",
+  "sheet": 10,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 13,
+  "title": "",
+  "kb": 47
+ },
+ {
+  "file": "2__sheet11.plan.json",
+  "tag": "2",
+  "sheet": 11,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 13,
+  "title": "",
+  "kb": 47
+ },
+ {
+  "file": "2__sheet12.plan.json",
+  "tag": "2",
+  "sheet": 12,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 13,
+  "title": "",
+  "kb": 47
+ },
+ {
+  "file": "2__sheet17.plan.json",
+  "tag": "2",
+  "sheet": 17,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 11,
+  "title": "",
+  "kb": 39
+ },
+ {
+  "file": "1A__sheet00.plan.json",
+  "tag": "1A",
+  "sheet": 0,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 38,
+  "title": "Фрагмент плана на отметке -3.400. Помещение Кроссовой",
+  "kb": 70
+ },
+ {
+  "file": "1A__sheet01.plan.json",
+  "tag": "1A",
+  "sheet": 1,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 38,
+  "title": "Фрагмент плана на отметке -3.400. Помещение Кроссовой",
+  "kb": 88
+ },
+ {
+  "file": "1A__sheet02.plan.json",
+  "tag": "1A",
+  "sheet": 2,
+  "scale": 48.0,
+  "paper_mm": [
+   297.0,
+   420.0
+  ],
+  "agpt_geom": 162,
+  "title": "",
+  "kb": 381
+ },
+ {
+  "file": "1A__sheet03.plan.json",
+  "tag": "1A",
+  "sheet": 3,
+  "scale": 48.0,
+  "paper_mm": [
+   297.0,
+   420.0
+  ],
+  "agpt_geom": 18,
+  "title": "Фрагмент плана на отметке -2.500. Помещение Электрощитовой",
+  "kb": 14
+ },
+ {
+  "file": "1A__sheet04.plan.json",
+  "tag": "1A",
+  "sheet": 4,
+  "scale": 48.0,
+  "paper_mm": [
+   297.0,
+   420.0
+  ],
+  "agpt_geom": 49,
+  "title": "Фрагмент плана на отметке -2.500. Помещение Электрощитовой",
+  "kb": 91
+ },
+ {
+  "file": "5A__sheet00.plan.json",
+  "tag": "5A",
+  "sheet": 0,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 36,
+  "title": "Фрагмент плана на отметке %%P0.000. Помещение серверной",
+  "kb": 70
+ },
+ {
+  "file": "5A__sheet01.plan.json",
+  "tag": "5A",
+  "sheet": 1,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 38,
+  "title": "Фрагмент плана на отметке %%P0.000. Помещение серверной",
+  "kb": 88
+ },
+ {
+  "file": "5A__sheet02.plan.json",
+  "tag": "5A",
+  "sheet": 2,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 36,
+  "title": "Фрагмент плана на отметке +5.100. Помещение кроссовой",
+  "kb": 70
+ },
+ {
+  "file": "3__sheet00.plan.json",
+  "tag": "3",
+  "sheet": 0,
+  "scale": 40.0,
+  "paper_mm": [
+   1189.0,
+   841.0
+  ],
+  "agpt_geom": 17,
+  "title": "Фрагмент плана 1го этажа",
+  "kb": 70
+ },
+ {
+  "file": "3__sheet01.plan.json",
+  "tag": "3",
+  "sheet": 1,
+  "scale": 40.0,
+  "paper_mm": [
+   1189.0,
+   841.0
+  ],
+  "agpt_geom": 18,
+  "title": "Фрагмент плана подвального этажа",
+  "kb": 333
+ },
+ {
+  "file": "3__sheet02.plan.json",
+  "tag": "3",
+  "sheet": 2,
+  "scale": 40.0,
+  "paper_mm": [
+   841.0,
+   1189.0
+  ],
+  "agpt_geom": 12,
+  "title": "",
+  "kb": 766
+ },
+ {
+  "file": "4__sheet00.plan.json",
+  "tag": "4",
+  "sheet": 0,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 41,
+  "title": "Фрагмент плана на отметке +5.100. Помещение кроссовой",
+  "kb": 86
+ },
+ {
+  "file": "4__sheet01.plan.json",
+  "tag": "4",
+  "sheet": 1,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 36,
+  "title": "Фрагмент плана на отметке +9.300. Помещение кроссовой",
+  "kb": 70
+ },
+ {
+  "file": "4__sheet02.plan.json",
+  "tag": "4",
+  "sheet": 2,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 42,
+  "title": "Фрагмент плана на отметке +9.300. Помещение кроссовой",
+  "kb": 86
+ },
+ {
+  "file": "4__sheet03.plan.json",
+  "tag": "4",
+  "sheet": 3,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 36,
+  "title": "Фрагмент плана 4го этада на отметке +13.500. Помещение кроссовой",
+  "kb": 70
+ },
+ {
+  "file": "4__sheet04.plan.json",
+  "tag": "4",
+  "sheet": 4,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 43,
+  "title": "Фрагмент плана 4го этажа на отметке +13.500. Помещение кроссовой",
+  "kb": 86
+ },
+ {
+  "file": "4__sheet05.plan.json",
+  "tag": "4",
+  "sheet": 5,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 28,
+  "title": "Фрагмент плана 4го этажа на отметке +13.500. Помещение кроссовой",
+  "kb": 52
+ },
+ {
+  "file": "4__sheet06.plan.json",
+  "tag": "4",
+  "sheet": 6,
+  "scale": 40.0,
+  "paper_mm": [
+   420.0,
+   297.0
+  ],
+  "agpt_geom": 42,
+  "title": "Фрагмент плана 4го этажа на отметке +13.500. Помещение кроссовой",
+  "kb": 94
+ }
+]
