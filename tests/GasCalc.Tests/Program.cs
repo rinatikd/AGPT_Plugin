@@ -69,20 +69,15 @@ namespace AGPT.Calc.Tests
                     room.Volume = s * h;
                     room.Height = h;
                     room.OpeningsArea = inp.GetProperty("Fh").GetDouble();
-                    room.PiOverride = inp.GetProperty("Pi").GetDouble();
                     room.TMinC = inp.GetProperty("Tm_C").GetDouble();
                     room.PipeVolume = inp.GetProperty("Vtr").GetDouble();
-                    room.AltitudeM = 347.0;
-                    room.K3Mode = K3Mode.LowerRow;
-                    room.Fire = FireKind.ClassAOther;
-                    JsonElement k4;
-                    if (inp.TryGetProperty("K4", out k4)) room.K4Override = k4.GetDouble();
+                    room.Fire = FireKind.ClassAOther;      // П = 0,65 (проёмы внизу и вверху) и K4 = 1,5 — значения нормы
 
                     // Входы, не выраженные напрямую в таблице «Исходные данные» эталона
                     if (key == "1117") { room.Volume = 57.0; room.Height = 3.85; room.DeltaVolume = 12.0 * 3.85; }
                     if (key == "1435") { room.Volume = 221.0; room.DeltaVolume = 221.0; }
 
-                    CalcResult r = GasCalc.Compute(room, new GotvSpec(), null);
+                    CalcResult r = GasCalc.Compute(room, new ProjectSettings(), new GotvSpec(), null);
                     double expMp = exp.GetProperty("Mp").GetDouble();
                     double expRho = exp.GetProperty("rho1").GetDouble();
                     int expMg = (int)exp.GetProperty("Mg").GetDouble();
@@ -101,6 +96,16 @@ namespace AGPT.Calc.Tests
                         + " " + (ok ? "OK" : "FAIL"));
                 }
             }
+
+            // Архив 1435 по норме (K4 = 2,25): набор модулей выбирает инженер
+            RoomInput arch = new RoomInput();
+            arch.Name = "1435 архив (K4 = 2,25)";
+            arch.Volume = 221.0; arch.Height = 4.3; arch.OpeningsArea = 0.017; arch.TMinC = 20.0;
+            arch.Fire = FireKind.ClassAPaperRolls; arch.PipeVolume = 0.0033;
+            CalcResult ra = GasCalc.Compute(arch, new ProjectSettings(), new GotvSpec(), null);
+            Console.WriteLine(arch.Name + ": Mр=" + ra.Mp.ToString("0.0", ci) + " Mг=" + ra.Mg.ToString("0.0", ci)
+                + " нужен выбор инженера: " + (ra.NeedsEngineerDecision ? "да" : "нет") + ", вариантов: " + ra.Candidates.Count.ToString(ci));
+            if (!ra.NeedsEngineerDecision || ra.Candidates.Count == 0) fails++;
             Console.WriteLine(fails == 0 ? "ИТОГО: все проверки пройдены" : "ИТОГО: расхождений: " + fails.ToString(ci));
             return fails == 0 ? 0 : 1;
         }
