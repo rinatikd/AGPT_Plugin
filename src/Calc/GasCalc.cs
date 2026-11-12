@@ -1,9 +1,14 @@
 // GasCalc.cs — расчёт массы ГОТВ по СП РК 2.02-102-2022, Приложение Г.
-// Точный порт tools/gas_calc.py. Спецификация: docs/CALC_SPEC_RK.md.
+// Точный порт tools/gas_calc.py. Спецификация: docs/CALC_SPEC_RK.md, требования: docs/REQUIREMENTS.md.
 // Чистая логика без зависимостей от AutoCAD; проверяется tests/GasCalc.Tests по tests/golden.
+//
+// Решения владельца: коэффициенты строго по норме (без ручного переопределения K3, K4, П, ρготв);
+// правило K3 между строками таблицы Д.11 — настройка проекта; если одного модуля не хватает,
+// набор модулей выбирает инженер (движок возвращает варианты и ждёт выбора в RoomInput.ChosenModules).
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 
 namespace AGPT.Calc
 {
@@ -21,6 +26,14 @@ namespace AGPT.Calc
         public double CnHeptane = 7.2;             // % об., таблица Д.8
         public double TauPod = 10.0;               // с
         public double VaporDensityCap = 32.0;      // кг/м3, плотность насыщенных паров при 20 C (справочно, проверить по паспорту)
+        public double LiquidDensity = 1400.0;      // кг/м3, плотность жидкой фазы при 20 C (справочно) — для проверки п. 5.4.3.9
+    }
+
+    // Настройки ПРОЕКТА (одинаковы для всех помещений)
+    public class ProjectSettings
+    {
+        public double AltitudeM = 347.0;           // Астана
+        public K3Mode K3Mode = K3Mode.LowerRow;    // норма правило между строками таблицы не оговаривает
     }
 
     public class Module
@@ -43,18 +56,11 @@ namespace AGPT.Calc
         public double OpeningsArea;                // ΣFн, м2
         public double? DeltaVolume;                // объём для δ (если null — Vр)
         public OpeningsPos OpeningsPosition = OpeningsPos.BottomAndTop;
-        public double? PiOverride;
-        public double TMinC = 20.0;                // минимальная температура, °C
-        public double AltitudeM = 347.0;           // Астана
-        public K3Mode K3Mode = K3Mode.LowerRow;
-        public double? K3Override;
-        public FireKind Fire = FireKind.ClassAOther;
-        public double? K4Override;
+        public double TMinC = 20.0;                // минимальная температура воздуха, °C
+        public FireKind Fire = FireKind.ClassAOther;   // вид горючего -> K4 (входные данные, не коэффициент)
         public double PipeVolume;                  // Vтр, м3
-        public double? RhoResidual;                // плотность остатка ГОТВ, кг/м3
-        public double? PResidualAbsMpa;            // остаточное давление в трубах (абс.), МПа
-        public double K1 = 1.05;
-        public SelectionRule Rule = SelectionRule.MinCount;
+        public double? PResidualAbsMpa;            // остаточное давление в трубах (абс.), из гидравлического расчёта
+        public List<string> ChosenModules;         // решение инженера: имена модулей набора (если одного не хватает)
     }
 
     public class CalcResult
@@ -62,16 +68,23 @@ namespace AGPT.Calc
         public double Rho1, K3, Delta, K2, Pi, K4 = 1.0;
         public double MpBase, Mp, RhoResidual, Mtr, Mbn, Mg;
         public List<Module> Modules = new List<Module>();
+        public bool NeedsEngineerDecision;
+        public List<List<Module>> Candidates = new List<List<Module>>();
         public List<string> Warnings = new List<string>();
     }
 
     public static class GasCalc
     {
         public const double T0K = 293.0;
+        public const double K1 = 1.05;             // Г.1 (норма)
 
         // Таблица Д.11: высота над уровнем моря (м) -> K3
         private static readonly double[] K3Alt = { 0, 300, 600, 900, 1200, 1500, 1800, 2100 };
         private static readonly double[] K3Val = { 1.00, 0.96, 0.93, 0.89, 0.86, 0.82, 0.78, 0.75 };
+
+        // Таблица 9 (п. 5.4.1.10): верхняя граница объёма помещения (м3) -> допустимый параметр негерметичности (1/м)
+        private static readonly double[] LeakVol = { 10, 20, 30, 50, 75, 100, 150, 200, 250, 300, 400, 500, 750, 1000, 1500, 2000, 2500, 3000, 4000 };
+        private static readonly double[] LeakLim = { 0.0440, 0.0330, 0.0280, 0.0220, 0.0180, 0.0160, 0.0140, 0.0120, 0.0110, 0.0100, 0.0090, 0.0080, 0.0070, 0.0060, 0.0050, 0.0045, 0.0040, 0.0037, 0.0033 };
 
         public static double PiValue(OpeningsPos p)
         {
@@ -123,7 +136,15 @@ namespace AGPT.Calc
             return 1.0;
         }
 
-        // Оценка плотности остатка: идеальный газ при давлении p, не выше плотности насыщенных паров.
+        // Допустимый параметр негерметичности по объёму; null — выше 4000 м3 (продолжение таблицы 9 не закодировано)
+        public static double? LeakageLimit(double volume)
+        {
+            for (int i = 0; i < LeakVol.Length; i++)
+                if (volume <= LeakVol[i]) return LeakLim[i];
+            return null;
+        }
+
+        // Плотность остатка: идеальный газ при давлении p, не выше плотности насыщенных паров (оценка, подтвердить паспортом).
         public static double EstimateRhoResidual(double pAbsMpa, double tMinC, GotvSpec g)
         {
             double rho = g.Rho0 * (T0K / (tMinC + 273.0)) * (pAbsMpa / 0.1013);
@@ -160,8 +181,8 @@ namespace AGPT.Calc
             return best;
         }
 
-        // Подбор набора модулей с суммарной заправкой >= mgRequired. Предварительное правило, утверждает инженер.
-        // MinCount: сначала минимальное число модулей, затем минимальная суммарная заправка (по умолчанию).
+        // Набор модулей с суммарной заправкой >= mgRequired.
+        // MinCount: сначала минимальное число модулей, затем минимальная заправка.
         // MinTotal: минимальная суммарная заправка, затем меньше модулей.
         public static List<Module> SelectModules(double mgRequired, List<Module> catalog, int maxCount, SelectionRule rule)
         {
@@ -194,6 +215,15 @@ namespace AGPT.Calc
             return new List<Module>();
         }
 
+        // Один модуль с заправкой >= mg (наименьший из подходящих); null — одного модуля не хватает
+        public static Module SingleModuleFor(double mg, List<Module> catalog)
+        {
+            Module best = null;
+            foreach (Module m in catalog)
+                if (m.FillKg >= mg && (best == null || m.FillKg < best.FillKg)) best = m;
+            return best;
+        }
+
         private static bool SameModules(List<Module> a, List<Module> b)
         {
             if (a.Count != b.Count) return false;
@@ -202,19 +232,27 @@ namespace AGPT.Calc
             return true;
         }
 
-        public static CalcResult Compute(RoomInput room, GotvSpec g, List<Module> catalog)
+        private static string SetKey(List<Module> s)
         {
+            StringBuilder sb = new StringBuilder();
+            foreach (Module m in s) sb.Append(m.Name).Append('|');
+            return sb.ToString();
+        }
+
+        public static CalcResult Compute(RoomInput room, ProjectSettings project, GotvSpec g, List<Module> catalog)
+        {
+            if (project == null) project = new ProjectSettings();
             if (g == null) g = new GotvSpec();
             if (catalog == null) catalog = DefaultCatalog();
             CultureInfo ci = CultureInfo.InvariantCulture;
             CalcResult r = new CalcResult();
             double tmK = room.TMinC + 273.0;
 
-            r.K3 = room.K3Override.HasValue ? room.K3Override.Value : K3FromAltitude(room.AltitudeM, room.K3Mode);
+            r.K3 = K3FromAltitude(project.AltitudeM, project.K3Mode);
             r.Rho1 = g.Rho0 * (T0K / tmK) * r.K3;                                      // Г.5
             double vd = (room.DeltaVolume.HasValue && room.DeltaVolume.Value > 0.0) ? room.DeltaVolume.Value : room.Volume;
             r.Delta = room.OpeningsArea / vd;                                           // δ = ΣFн/Vр
-            r.Pi = room.PiOverride.HasValue ? room.PiOverride.Value : PiValue(room.OpeningsPosition);
+            r.Pi = PiValue(room.OpeningsPosition);
             r.K2 = r.Pi * r.Delta * g.TauPod * Math.Sqrt(room.Height);                  // Г.6
 
             double cn = g.CnHeptane;
@@ -222,48 +260,103 @@ namespace AGPT.Calc
                 ? cn / (100.0 - cn)                                                     // Г.3
                 : Math.Log(100.0 / (100.0 - cn));                                       // Г.4
             r.MpBase = room.Volume * r.Rho1 * (1.0 + r.K2) * form;
-            r.K4 = room.K4Override.HasValue ? room.K4Override.Value : K4Value(room.Fire);
+            r.K4 = K4Value(room.Fire);
             r.Mp = r.K4 * r.MpBase;                                                     // Г.7
 
+            // Проверки негерметичности
             bool classA = room.Fire == FireKind.ClassAOther || room.Fire == FireKind.ClassAPaperRolls;
             if (classA && r.Delta > 0.001)
                 r.Warnings.Add("δ = " + r.Delta.ToString("0.00000", ci) + " > 0.001 м^-1: для класса А не допускается (Г.7)");
+            double? lim = LeakageLimit(room.Volume);
+            if (lim.HasValue && r.Delta > lim.Value)
+                r.Warnings.Add("δ = " + r.Delta.ToString("0.00000", ci) + " превышает допустимое " + lim.Value.ToString("0.0000", ci)
+                    + " для объёма " + room.Volume.ToString("0.0", ci) + " м3 (табл. 9, п. 5.4.1.10)");
 
-            // Mтр (Г.2)
-            if (room.RhoResidual.HasValue)
-                r.RhoResidual = room.RhoResidual.Value;
-            else if (room.PResidualAbsMpa.HasValue)
+            // Mтр (Г.2): плотность остатка — из остаточного давления гидравлического расчёта
+            if (room.PResidualAbsMpa.HasValue)
                 r.RhoResidual = EstimateRhoResidual(room.PResidualAbsMpa.Value, room.TMinC, g);
             else
             {
                 r.RhoResidual = 0.0;
                 if (room.PipeVolume > 0.0)
-                    r.Warnings.Add("ρготв (остаток в трубах) не задан: Mтр принят 0 — задайте давление остатка или плотность");
+                    r.Warnings.Add("Остаточное давление в трубах не задано (нужен гидравлический расчёт): Mтр принят 0");
             }
             r.Mtr = room.PipeVolume * r.RhoResidual;
 
-            // Mг (Г.1) с итерацией по Mбn = Mб·n
+            // Проверка п. 5.4.3.9: Vтр не более 80% объёма жидкой фазы расчётной массы ГОТВ
+            if (room.PipeVolume > 0.0 && g.LiquidDensity > 0.0)
+            {
+                double vmax = 0.8 * r.Mp / g.LiquidDensity;
+                if (room.PipeVolume > vmax)
+                    r.Warnings.Add("Vтр = " + room.PipeVolume.ToString("0.0000", ci) + " м3 больше 80% объёма жидкой фазы ("
+                        + vmax.ToString("0.0000", ci) + " м3), п. 5.4.3.9");
+            }
+
+            // Mг (Г.1) с итерацией по Mбn = Mб·n; выбор модулей
             List<Module> mods = new List<Module>();
             for (int it = 0; it < 6; it++)
             {
                 double mbnIt = 0.0;
                 foreach (Module m in mods) mbnIt += m.ResidualKg;
-                double mgIt = room.K1 * (r.Mp + r.Mtr + mbnIt);
-                List<Module> newMods = SelectModules(mgIt, catalog, 6, room.Rule);
+                double mgIt = K1 * (r.Mp + r.Mtr + mbnIt);
+                Module m1 = SingleModuleFor(mgIt, catalog);
+                List<Module> newMods = new List<Module>();
+                List<List<Module>> cands = new List<List<Module>>();
+                if (m1 != null)
+                {
+                    newMods.Add(m1);
+                }
+                else
+                {
+                    SelectionRule[] rules = { SelectionRule.MinCount, SelectionRule.MinTotal };
+                    List<string> seen = new List<string>();
+                    foreach (SelectionRule rule in rules)
+                    {
+                        List<Module> s = SelectModules(mgIt, catalog, 6, rule);
+                        if (s.Count > 0 && !seen.Contains(SetKey(s)))
+                        {
+                            seen.Add(SetKey(s));
+                            cands.Add(s);
+                        }
+                    }
+                    if (room.ChosenModules != null)
+                    {
+                        foreach (string cname in room.ChosenModules)
+                            foreach (Module cm in catalog)
+                                if (cm.Name == cname) newMods.Add(cm);
+                    }
+                }
+                r.Candidates = cands;
                 if (it > 0 && SameModules(newMods, mods)) break;
                 mods = newMods;
             }
             r.Mbn = 0.0;
             foreach (Module m in mods) r.Mbn += m.ResidualKg;
-            r.Mg = room.K1 * (r.Mp + r.Mtr + r.Mbn);
+            r.Mg = K1 * (r.Mp + r.Mtr + r.Mbn);
             r.Modules = mods;
 
-            if (mods.Count > 1)
-                r.Warnings.Add("Mг " + r.Mg.ToString("0.0", ci) + " кг больше одного модуля: набор из " + mods.Count.ToString(ci) + " модулей (правило подбора предварительное)");
-            bool allZero = mods.Count > 0;
-            foreach (Module m in mods) if (m.ResidualKg != 0.0) allZero = false;
-            if (allZero)
-                r.Warnings.Add("Остаток в модуле Mб не задан (0): Mбn не учтён — взять из паспорта модуля");
+            if (mods.Count == 0)
+            {
+                r.NeedsEngineerDecision = true;
+                double biggest = 0.0;
+                foreach (Module m in catalog) if (m.FillKg > biggest) biggest = m.FillKg;
+                r.Warnings.Add("Mг " + r.Mg.ToString("0.0", ci) + " кг больше самого крупного модуля (" + biggest.ToString("0", ci)
+                    + " кг): набор модулей выбирает инженер (вариантов: " + r.Candidates.Count.ToString(ci) + ")");
+            }
+            else
+            {
+                double total = 0.0;
+                bool allZero = true;
+                foreach (Module m in mods)
+                {
+                    total += m.FillKg;
+                    if (m.ResidualKg != 0.0) allZero = false;
+                }
+                if (room.ChosenModules != null && room.ChosenModules.Count > 0 && total < r.Mg)
+                    r.Warnings.Add("Выбранный набор (" + total.ToString("0", ci) + " кг) меньше Mг = " + r.Mg.ToString("0.0", ci) + " кг");
+                if (allZero)
+                    r.Warnings.Add("Остаток в модуле Mб не задан (0): Mбn не учтён — взять из паспорта модуля");
+            }
             return r;
         }
     }
