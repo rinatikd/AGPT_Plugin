@@ -9,7 +9,7 @@ check_golden.py — прогоняет движок tools/gas_calc.py по ко�
 import json, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from gas_calc import RoomInput, GotvSpec, compute  # noqa: E402
+from gas_calc import RoomInput, ProjectSettings, GotvSpec, compute  # noqa: E402
 
 GOLDEN = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "tests", "golden", "mgimo_calc_golden.json")
 
@@ -40,10 +40,10 @@ def main():
         ov = OVERRIDES.get(k, {})
         room = RoomInput(
             name=c["room"], volume=ov.get("volume", i["S"] * i["H"]), height=ov.get("height", i["H"]),
-            openings_area=i["Fh"], delta_volume=ov.get("delta_volume"), pi_override=i["Pi"],
-            t_min_c=i["Tm_C"], altitude_m=347.0, k3_mode="lower_row", fire="class_a_other",
-            k4_override=i.get("K4", 1.5), pipe_volume=i["Vtr"])
-        r = compute(room, GotvSpec())
+            openings_area=i["Fh"], delta_volume=ov.get("delta_volume"), openings_pos="bottom_and_top",
+            t_min_c=i["Tm_C"], fire="class_a_other", pipe_volume=i["Vtr"])
+        assert i["Pi"] == 0.65 and i.get("K4", 1.5) == 1.5   # П и K4 эталона = значения нормы (без переопределения)
+        r = compute(room, ProjectSettings(), GotvSpec())
         dev = r.mp / e["Mp"] - 1.0
         ok_mp = abs(dev) <= TOL_MP or (k == "1016" and abs(dev) <= 0.006)   # 1016: округление S в таблице эталона
         ok_rho = abs(r.rho1 / e["rho1"] - 1.0) <= TOL_RHO
@@ -55,16 +55,21 @@ def main():
             fails += 1
         print("%-28s %8.3f %8.6f %8.2f %8.2f %+8.2f%%  %s/%s %s" % (
             c["room"][:28], r.rho1, r.k2, r.mp, e["Mp"], dev * 100, int(got_mod), ref_mod, status))
-    # Контрольные значения по норме для архива (K4 = 2.25), информативно
+    # Архив 1435 по норме (K4 = 2.25): набор модулей выбирает инженер
     print("\nАрхив 1435 по норме (K4 = 2.25), Mтр/Mбn не заданы:")
     for v in (194.19, 221.0):
-        for rule in ("min_count", "min_total"):
-            room = RoomInput(name="1435", volume=v, height=4.3, openings_area=0.017, pi_override=0.65,
-                             t_min_c=20, fire="class_a_paper_rolls", pipe_volume=0.0033, selection_rule=rule)
-            r = compute(room)
-            print("  V = %6.1f м3, правило %-9s: Mр = %6.1f кг, Mг = %6.1f кг, модулей: %d (%s) = %d кг" % (
-                v, rule, r.mp, r.mg, len(r.modules), "+".join(str(int(m.fill_kg)) for m in r.modules),
-                sum(m.fill_kg for m in r.modules)))
+        room = RoomInput(name="1435", volume=v, height=4.3, openings_area=0.017,
+                         t_min_c=20, fire="class_a_paper_rolls", pipe_volume=0.0033)
+        r = compute(room, ProjectSettings(), GotvSpec())
+        print("  V = %6.1f м3: Mр = %6.1f кг, Mг = %6.1f кг, нужен выбор инженера: %s" % (
+            v, r.mp, r.mg, "да" if r.needs_engineer_decision else "нет"))
+        for k, cand in enumerate(r.candidates, 1):
+            print("     вариант %d: %s = %d кг (%d мод.)" % (
+                k, "+".join(str(int(m.fill_kg)) for m in cand), sum(m.fill_kg for m in cand), len(cand)))
+        if r.needs_engineer_decision and r.candidates:
+            room.chosen_modules = [m.name for m in r.candidates[0]]
+            r2 = compute(room, ProjectSettings(), GotvSpec())
+            print("     после выбора варианта 1: Mг = %.1f кг, модули: %s" % (r2.mg, "+".join(str(int(m.fill_kg)) for m in r2.modules)))
     print("\nИТОГО: %s" % ("все проверки пройдены" if fails == 0 else "расхождений: %d" % fails))
     return 1 if fails else 0
 
