@@ -255,3 +255,27 @@ npx skills find <query>
 ---
 
 *Конец handoff. Обновляйте этот файл при смене архитектуры, команд или статуса backlog.*
+
+
+## M1b — XData adapter contract (2026-11-22)
+
+Branch: `feat/agpt-m1b-xdata-adapter-20261122`, based on M1a PR #4 exact head
+`5297fec7a1016e619d460ce45ccde92c638019e1`.
+
+The M1b adapter is deliberately fail-closed and AutoCAD-independent. The AutoCAD host must
+extract an entity's AGPT XData inside a read transaction and pass the key/value dictionary
+to `GasCalculationXDataAdapter.Calculate`. Schema version `AGPT_CALC_SCHEMA=2` is required.
+Legacy XData without a schema is rejected; no inferred defaults, sample/demo values, or
+automatic migration are allowed.
+
+Schema-2 stores canonical calculation inputs using the field names in
+`GasCalculationService.Fields`, `Catalog.Count` plus indexed catalogue fields, and
+per-field evidence under `EVIDENCE.<field>.*`. The adapter validates scalar parsing,
+enum names, bounded catalogue counts, and evidence metadata. It then calls the existing
+provenance service; only that service may call GasCalc. Changed values with stale
+ValueSha256 are rejected.
+
+Scope boundary: this adapter does not yet read AutoCAD entities itself, does not write or
+migrate XData, does not replace legacy AGPT_CALC / AGPT_CALC_DRAW, and does not enable
+release output. The AutoCAD read-only entity bridge and command cutover are a subsequent
+M1b integration gate requiring AutoCAD 2026 build and disposable-DWG E2E.
