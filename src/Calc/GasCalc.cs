@@ -93,7 +93,8 @@ namespace AGPT.Calc
                 case OpeningsPos.BottomAndTop: return 0.65;
                 case OpeningsPos.TopOnly: return 0.10;
                 case OpeningsPos.BottomOnly: return 0.25;
-                default: return 0.40;
+                case OpeningsPos.Other: return 0.40;
+                default: throw new ArgumentException("OPENINGS_POSITION_INVALID");
             }
         }
 
@@ -101,9 +102,10 @@ namespace AGPT.Calc
         {
             switch (f)
             {
+                case FireKind.ClassBHeptane: return 1.0;
                 case FireKind.ClassAOther: return 1.5;
                 case FireKind.ClassAPaperRolls: return 2.25;
-                default: return 1.0;
+                default: throw new ArgumentException("FIRE_KIND_INVALID");
             }
         }
 
@@ -120,6 +122,10 @@ namespace AGPT.Calc
 
         public static double K3FromAltitude(double h, K3Mode mode)
         {
+            if (!IsFinite(h) || h < K3Alt[0] || h > K3Alt[K3Alt.Length - 1])
+                throw new ArgumentException("PROJECT_ALTITUDE_INVALID");
+            if (!Enum.IsDefined(typeof(K3Mode), mode))
+                throw new ArgumentException("K3_MODE_INVALID");
             if (h <= K3Alt[0]) return K3Val[0];
             int last = K3Alt.Length - 1;
             if (h >= K3Alt[last]) return K3Val[last];
@@ -147,6 +153,11 @@ namespace AGPT.Calc
         // Плотность остатка: идеальный газ при давлении p, не выше плотности насыщенных паров (оценка, подтвердить паспортом).
         public static double EstimateRhoResidual(double pAbsMpa, double tMinC, GotvSpec g)
         {
+            RequireInput(g != null, "GOTV_SPEC_REQUIRED");
+            RequireInput(IsFinite(pAbsMpa) && pAbsMpa > 0.0, "RESIDUAL_PRESSURE_INVALID");
+            RequireInput(IsFinite(tMinC) && tMinC > -273.0, "ROOM_TEMPERATURE_INVALID");
+            RequireInput(IsFinite(g.Rho0) && g.Rho0 > 0.0, "GOTV_RHO0_INVALID");
+            RequireInput(IsFinite(g.VaporDensityCap) && g.VaporDensityCap > 0.0, "GOTV_VAPOR_DENSITY_CAP_INVALID");
             double rho = g.Rho0 * (T0K / (tMinC + 273.0)) * (pAbsMpa / 0.1013);
             return Math.Min(rho, g.VaporDensityCap);
         }
