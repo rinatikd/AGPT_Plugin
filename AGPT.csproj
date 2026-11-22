@@ -44,6 +44,9 @@
     <Compile Include="src\AGPT_Plugin_Drawings.cs" />
     <Compile Include="src\APPT_Plugin_Drawings.cs" />
     <Compile Include="src\PluginInit.cs" />
+    <Compile Include="src\Calc\GasCalc.cs" />
+    <Compile Include="src\Calc\GasCalculationService.cs" />
+    <Compile Include="src\Calc\GasCalculationXDataAdapter.cs" />
   </ItemGroup>
 
   <Target Name="CheckAcadRefs" BeforeTargets="ResolveAssemblyReferences">
