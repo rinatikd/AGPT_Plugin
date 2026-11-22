@@ -138,12 +138,17 @@ namespace AGPT.Calc.Tests
                 staleOutcome.IsBlocked && staleOutcome.BlockingFindings.Exists(
                     x => x.Contains("VALUE_SHA256_MISMATCH", StringComparison.Ordinal)));
 
+            Dictionary<string, string> oversizedCatalog = Fixture();
+            oversizedCatalog[GasCalculationXDataAdapter.CatalogCountKey] = "21";
+            Check("oversized module catalogue is rejected before combinatorial selection",
+                GasCalculationXDataAdapter.Calculate(oversizedCatalog).IsBlocked);
+
             Dictionary<string, string> missingCatalog = FullyEvidencedFixture();
             missingCatalog.Remove(GasCalculationService.Fields.CatalogFill(0));
             Check("missing module catalogue value is blocked",
                 GasCalculationXDataAdapter.Calculate(missingCatalog).IsBlocked);
 
-            Console.WriteLine("[XDATA] scenarios=" + 7 + " failed=" + _failed);
+            Console.WriteLine("[XDATA] scenarios=" + 8 + " failed=" + _failed);
             return _failed;
         }
     }
