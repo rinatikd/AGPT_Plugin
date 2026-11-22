@@ -239,11 +239,80 @@ namespace AGPT.Calc
             return sb.ToString();
         }
 
+        private static bool IsFinite(double value)
+        {
+            return !double.IsNaN(value) && !double.IsInfinity(value);
+        }
+
+        private static void RequireInput(bool condition, string code)
+        {
+            if (!condition) throw new ArgumentException(code);
+        }
+
+        /// <summary>
+        /// Строгая проверка входов расчёта. Невалидные значения не заменяются defaults
+        /// и не допускаются к формулам, чтобы исключить NaN/Infinity и неверные enum fallbacks.
+        /// </summary>
+        public static void ValidateInput(RoomInput room, ProjectSettings project, GotvSpec g, List<Module> catalog)
+        {
+            if (project == null) project = new ProjectSettings();
+            if (g == null) g = new GotvSpec();
+            if (catalog == null) catalog = DefaultCatalog();
+
+            RequireInput(room != null, "ROOM_INPUT_REQUIRED");
+            RequireInput(!string.IsNullOrWhiteSpace(room.Name), "ROOM_NAME_REQUIRED");
+            RequireInput(IsFinite(room.Volume) && room.Volume > 0.0, "ROOM_VOLUME_INVALID");
+            RequireInput(IsFinite(room.Height) && room.Height > 0.0, "ROOM_HEIGHT_INVALID");
+            RequireInput(IsFinite(room.OpeningsArea) && room.OpeningsArea >= 0.0, "OPENINGS_AREA_INVALID");
+            RequireInput(!room.DeltaVolume.HasValue ||
+                (IsFinite(room.DeltaVolume.Value) && room.DeltaVolume.Value > 0.0), "DELTA_VOLUME_INVALID");
+            RequireInput(IsFinite(room.TMinC) && room.TMinC > -273.0, "ROOM_TEMPERATURE_INVALID");
+            RequireInput(Enum.IsDefined(typeof(OpeningsPos), room.OpeningsPosition), "OPENINGS_POSITION_INVALID");
+            RequireInput(Enum.IsDefined(typeof(FireKind), room.Fire), "FIRE_KIND_INVALID");
+            RequireInput(IsFinite(room.PipeVolume) && room.PipeVolume >= 0.0, "PIPE_VOLUME_INVALID");
+            RequireInput(!room.PResidualAbsMpa.HasValue ||
+                (IsFinite(room.PResidualAbsMpa.Value) && room.PResidualAbsMpa.Value > 0.0), "RESIDUAL_PRESSURE_INVALID");
+
+            RequireInput(IsFinite(project.AltitudeM) &&
+                project.AltitudeM >= K3Alt[0] && project.AltitudeM <= K3Alt[K3Alt.Length - 1],
+                "PROJECT_ALTITUDE_INVALID");
+            RequireInput(Enum.IsDefined(typeof(K3Mode), project.K3Mode), "K3_MODE_INVALID");
+
+            RequireInput(Enum.IsDefined(typeof(GasKind), g.Kind), "GAS_KIND_INVALID");
+            RequireInput(IsFinite(g.Rho0) && g.Rho0 > 0.0, "GOTV_RHO0_INVALID");
+            RequireInput(IsFinite(g.CnHeptane) && g.CnHeptane > 0.0 && g.CnHeptane < 100.0, "GOTV_CONCENTRATION_INVALID");
+            RequireInput(IsFinite(g.TauPod) && g.TauPod > 0.0, "GOTV_TAU_INVALID");
+            RequireInput(IsFinite(g.VaporDensityCap) && g.VaporDensityCap > 0.0, "GOTV_VAPOR_DENSITY_CAP_INVALID");
+            RequireInput(IsFinite(g.LiquidDensity) && g.LiquidDensity > 0.0, "GOTV_LIQUID_DENSITY_INVALID");
+
+            RequireInput(catalog != null && catalog.Count > 0, "MODULE_CATALOG_EMPTY");
+            HashSet<string> moduleNames = new HashSet<string>(StringComparer.Ordinal);
+            foreach (Module module in catalog)
+            {
+                RequireInput(module != null, "MODULE_ENTRY_NULL");
+                RequireInput(!string.IsNullOrWhiteSpace(module.Name) && moduleNames.Add(module.Name),
+                    "MODULE_NAME_INVALID_OR_DUPLICATE");
+                RequireInput(IsFinite(module.FillKg) && module.FillKg > 0.0, "MODULE_FILL_INVALID");
+                RequireInput(IsFinite(module.ResidualKg) && module.ResidualKg >= 0.0, "MODULE_RESIDUAL_INVALID");
+            }
+
+            if (room.ChosenModules != null)
+            {
+                HashSet<string> chosen = new HashSet<string>(StringComparer.Ordinal);
+                foreach (string name in room.ChosenModules)
+                {
+                    RequireInput(!string.IsNullOrWhiteSpace(name) && chosen.Add(name), "CHOSEN_MODULE_DUPLICATE_OR_EMPTY");
+                    RequireInput(moduleNames.Contains(name), "CHOSEN_MODULE_UNKNOWN");
+                }
+            }
+        }
+
         public static CalcResult Compute(RoomInput room, ProjectSettings project, GotvSpec g, List<Module> catalog)
         {
             if (project == null) project = new ProjectSettings();
             if (g == null) g = new GotvSpec();
             if (catalog == null) catalog = DefaultCatalog();
+            ValidateInput(room, project, g, catalog);
             CultureInfo ci = CultureInfo.InvariantCulture;
             CalcResult r = new CalcResult();
             double tmK = room.TMinC + 273.0;
