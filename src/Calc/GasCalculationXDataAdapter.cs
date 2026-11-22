@@ -24,6 +24,7 @@ namespace AGPT.Calc
 
         private static bool TryValue(IDictionary<string, string> data, string key, out string value)
         {
+            value = null;
             return data != null && data.TryGetValue(key, out value) && value != null;
         }
 
