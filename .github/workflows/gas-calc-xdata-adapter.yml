@@ -1,0 +1,25 @@
+name: AGPT M1b XData adapter gate
+
+on:
+  push:
+    branches:
+      - feat/agpt-m1b-xdata-adapter-20261122
+  pull_request:
+    branches:
+      - main
+      - feat/agpt-m1-provenance-gate-20261122
+
+permissions:
+  contents: read
+
+jobs:
+  xdata-adapter-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Run normative, numeric, provenance and XData adapter gates
+        run: dotnet run --project tests/GasCalc.Tests/GasCalc.Tests.csproj --configuration Release
