@@ -177,6 +177,23 @@ namespace AGPT.Calc.Tests
             Check("changed input value invalidates its previous evidence hash",
                 changedValueResult.IsBlocked && changedValueResult.Calculation == null);
 
+            GasCalculationRequest changedCatalogValue = ValidRequest();
+            changedCatalogValue.Catalog[0].ResidualKg = 0.25; // Keep the original datasheet/value fingerprint.
+            GasCalculationOutcome changedCatalogResult = GasCalculationService.Calculate(changedCatalogValue);
+            Check("changed manufacturer catalogue value invalidates its previous evidence hash",
+                changedCatalogResult.IsBlocked && changedCatalogResult.Calculation == null);
+
+            GasCalculationRequest verifiedPressure = ValidRequest();
+            verifiedPressure.Room.PipeVolume = 0.0001;
+            verifiedPressure.Room.PResidualAbsMpa = 0.1013;
+            Attach(verifiedPressure, GasCalculationService.Fields.PipeVolume, Entered());
+            Attach(verifiedPressure, GasCalculationService.Fields.ResidualAbsPressure,
+                Imported("hydraulic:TEST-001"));
+            GasCalculationOutcome verifiedPressureResult = GasCalculationService.Calculate(verifiedPressure);
+            Check("verified absolute residual pressure passes and contributes positive Mtr",
+                !verifiedPressureResult.IsBlocked && verifiedPressureResult.Calculation != null &&
+                verifiedPressureResult.Calculation.Mtr > 0.0);
+
             GasCalculationRequest badHash = ValidRequest();
             Attach(badHash, GasCalculationService.Fields.CatalogResidual(0),
                 new InputEvidence
