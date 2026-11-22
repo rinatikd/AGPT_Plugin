@@ -3,6 +3,8 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace AGPT.Calc
@@ -26,6 +28,8 @@ namespace AGPT.Calc
         public string SourceSha256 { get; set; }
         public string SourceVersion { get; set; }
         public string ActorId { get; set; }
+        // SHA-256 of the exact canonical field value, not merely the source document.
+        public string ValueSha256 { get; set; }
     }
 
     public sealed class GasCalculationRequest
@@ -98,6 +102,106 @@ namespace AGPT.Calc
         private static bool IsSha256(string value) =>
             !string.IsNullOrWhiteSpace(value) && Sha256Pattern.IsMatch(value);
 
+        private static string Canonical(string kind, string value)
+        {
+            if (value == null) return kind + ":<null>";
+            return kind + ":" + value.Length.ToString(CultureInfo.InvariantCulture) + ":" + value;
+        }
+
+        private static string Number(double value) =>
+            value.ToString("R", CultureInfo.InvariantCulture);
+
+        private static string NullableNumber(double? value) =>
+            value.HasValue ? Canonical("double", Number(value.Value)) : Canonical("double", null);
+
+        private static string HashCanonicalValue(string field, string canonical)
+        {
+            byte[] bytes = Encoding.UTF8.GetBytes(field + "\n" + canonical);
+            return Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
+        }
+
+        private static string CanonicalValue(GasCalculationRequest request, string field)
+        {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+            if (request.Room == null && field.StartsWith("Room.", StringComparison.Ordinal))
+                throw new ArgumentException("ROOM_INPUT_REQUIRED", nameof(request));
+
+            RoomInput room = request.Room;
+            if (field == Fields.RoomName) return Canonical("string", room.Name);
+            if (field == Fields.RoomVolume) return Canonical("double", Number(room.Volume));
+            if (field == Fields.RoomHeight) return Canonical("double", Number(room.Height));
+            if (field == Fields.OpeningsArea) return Canonical("double", Number(room.OpeningsArea));
+            if (field == Fields.DeltaVolume) return NullableNumber(room.DeltaVolume);
+            if (field == Fields.OpeningsPosition) return Canonical("enum:OpeningsPos", ((int)room.OpeningsPosition).ToString(CultureInfo.InvariantCulture));
+            if (field == Fields.MinTemperature) return Canonical("double", Number(room.TMinC));
+            if (field == Fields.FireKind) return Canonical("enum:FireKind", ((int)room.Fire).ToString(CultureInfo.InvariantCulture));
+            if (field == Fields.PipeVolume) return Canonical("double", Number(room.PipeVolume));
+            if (field == Fields.ResidualAbsPressure) return NullableNumber(room.PResidualAbsMpa);
+            if (field == Fields.ChosenModules)
+            {
+                if (room.ChosenModules == null) return Canonical("string-list", null);
+                StringBuilder list = new StringBuilder();
+                foreach (string name in room.ChosenModules)
+                    list.Append(name == null ? "<null>" : name.Length.ToString(CultureInfo.InvariantCulture) + ":" + name).Append("|");
+                return Canonical("string-list", list.ToString());
+            }
+
+            if (field == Fields.Altitude)
+            {
+                if (request.Project == null) throw new ArgumentException("PROJECT_SETTINGS_REQUIRED", nameof(request));
+                return Canonical("double", Number(request.Project.AltitudeM));
+            }
+            if (field == Fields.K3Mode)
+            {
+                if (request.Project == null) throw new ArgumentException("PROJECT_SETTINGS_REQUIRED", nameof(request));
+                return Canonical("enum:K3Mode", ((int)request.Project.K3Mode).ToString(CultureInfo.InvariantCulture));
+            }
+
+            if (field == Fields.GasName || field == Fields.GasKind ||
+                field == Fields.GasReferenceDensity || field == Fields.GasConcentration ||
+                field == Fields.GasInjectionTime || field == Fields.GasVaporDensityCap ||
+                field == Fields.GasLiquidDensity)
+            {
+                if (request.Gotv == null) throw new ArgumentException("GOTV_SPEC_REQUIRED", nameof(request));
+                if (field == Fields.GasName) return Canonical("string", request.Gotv.Name);
+                if (field == Fields.GasKind) return Canonical("enum:GasKind", ((int)request.Gotv.Kind).ToString(CultureInfo.InvariantCulture));
+                if (field == Fields.GasReferenceDensity) return Canonical("double", Number(request.Gotv.Rho0));
+                if (field == Fields.GasConcentration) return Canonical("double", Number(request.Gotv.CnHeptane));
+                if (field == Fields.GasInjectionTime) return Canonical("double", Number(request.Gotv.TauPod));
+                if (field == Fields.GasVaporDensityCap) return Canonical("double", Number(request.Gotv.VaporDensityCap));
+                return Canonical("double", Number(request.Gotv.LiquidDensity));
+            }
+
+            if (field.StartsWith("Catalog[", StringComparison.Ordinal))
+            {
+                if (request.Catalog == null) throw new ArgumentException("VERIFIED_CATALOG_REQUIRED", nameof(request));
+                int close = field.IndexOf(']');
+                int open = field.IndexOf('[');
+                int index;
+                if (open < 0 || close <= open + 1 ||
+                    !int.TryParse(field.Substring(open + 1, close - open - 1), NumberStyles.None,
+                        CultureInfo.InvariantCulture, out index) ||
+                    index < 0 || index >= request.Catalog.Count || request.Catalog[index] == null)
+                    throw new ArgumentOutOfRangeException(nameof(field), "CATALOG_INDEX_INVALID");
+                Module module = request.Catalog[index];
+                if (field == Fields.CatalogName(index)) return Canonical("string", module.Name);
+                if (field == Fields.CatalogFill(index)) return Canonical("double", Number(module.FillKg));
+                if (field == Fields.CatalogResidual(index)) return Canonical("double", Number(module.ResidualKg));
+            }
+
+            throw new ArgumentException("UNKNOWN_EVIDENCE_FIELD: " + field, nameof(field));
+        }
+
+        /// <summary>
+        /// Computes the binding hash for one exact value in a request.
+        /// Integrators must recalculate it whenever that value changes.
+        /// </summary>
+        public static string ComputeEvidenceValueSha256(GasCalculationRequest request, string field)
+        {
+            if (string.IsNullOrWhiteSpace(field)) throw new ArgumentException("EVIDENCE_FIELD_REQUIRED", nameof(field));
+            return HashCanonicalValue(field, CanonicalValue(request, field));
+        }
+
         private static void Require(
             GasCalculationOutcome outcome,
             GasCalculationRequest request,
@@ -151,7 +255,30 @@ namespace AGPT.Calc
             }
 
             if (!metadataValid)
+            {
                 outcome.BlockingFindings.Add(field + ": EVIDENCE_METADATA_INVALID");
+                return;
+            }
+
+            if (!IsSha256(evidence.ValueSha256))
+            {
+                outcome.BlockingFindings.Add(field + ": VALUE_SHA256_MISSING_OR_INVALID");
+                return;
+            }
+
+            string expectedValueHash;
+            try
+            {
+                expectedValueHash = ComputeEvidenceValueSha256(request, field);
+            }
+            catch (ArgumentException)
+            {
+                outcome.BlockingFindings.Add(field + ": VALUE_CANONICALIZATION_FAILED");
+                return;
+            }
+
+            if (!string.Equals(evidence.ValueSha256, expectedValueHash, StringComparison.OrdinalIgnoreCase))
+                outcome.BlockingFindings.Add(field + ": VALUE_SHA256_MISMATCH");
         }
 
         private static void RequireRoomField(
