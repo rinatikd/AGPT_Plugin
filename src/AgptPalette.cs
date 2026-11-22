@@ -117,7 +117,7 @@ namespace AGPT.UI
                     MessageBox.Show("Сначала откройте чертёж AutoCAD.", "AGPT");
                     return;
                 }
-                doc.SendStringToExecute(command + "\\n", true, false, false);
+                doc.SendStringToExecute(command + "\n", true, false, false);
             };
             return button;
         }
