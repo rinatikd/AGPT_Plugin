@@ -35,6 +35,67 @@ Collect.FromModel() читает другой набор XData (TM, K4, VTR, GOT
 | Нет подтверждённого источника | Module.ResidualKg | Mб брать только из эксплуатационного документа конкретного типа/модели модуля. Ноль допустим только как явно подтверждённое значение, а не default |
 | Нет пользовательского решения в модели | RoomInput.ChosenModules | Когда GasCalc возвращает NeedsEngineerDecision, сохранить выбранные инженером имена модулей отдельно по каждой комнате; не подменять автоматическим набором |
 
+
+
+## 2.1. Подтверждённая структура данных актуального исходника — 22.11.2026
+
+Выполнен повторный статический аудит исходников репозитория. Зафиксированы blob SHA файлов, чтобы следующий этап M1 мог воспроизвести проверку:
+
+| Файл | Blob SHA | Подтверждённый факт |
+|---|---|---|
+| `AGPT.csproj` (main) | `44acc96030b6115455f405f865ae7956e3257f59` | `EnableDefaultCompileItems=false`; `src/Calc/GasCalc.cs` не включён в Compile |
+| `src/AGPT_Stage3_Blocks_Full.cs` (main) | `42703c364e3f0bb45c4ae261b2aa5aedf97a8547` | AGPT_ZONE/AGPT_CALC и модель ZoneData |
+| `src/AGPT_Plugin_Drawings.cs` (main) | `e8cf45ae0dfe0dfa073dc92daa1c006cf4fa1b0d` | Collect.FromModel, ZoneCalc и второй legacy path |
+| `src/Calc/GasCalc.cs` (PR #2 branch) | `3cfe75df6a6b0791e3a79037b941f7b00bd9f1d4` | validated standalone GasCalc; ещё не интегрирован в AGPT.csproj |
+
+### Фактический ввод AGPT_ZONE и сохранение XData
+
+AGPT_ZONE фактически запрашивает:
+- геометрию контура и единицы плана;
+- высоту H (prompt default 2.4 м);
+- название;
+- площадь негерметичности FH (prompt default 0.011 м²).
+
+Затем создаёт ZoneData только с Name, Vp=Area×H, H, Fh; остальные свойства берутся из инициализаторов ZoneData. На контур записываются GUID, ZONE_NAME, S, VP, H, FH, CN, RHO0, GOTV, INSTALL_TYPE, UNITS. Пользователь не вводит в этой команде TMinC, FireKind, OpeningsPosition, DeltaVolume, altitude/K3Mode, PipeVolume или PResidualAbsMpa.
+
+Это означает, что наличие CN/RHO0/GOTV в XData ещё не доказывает, что они введены или подтверждены инженером: они могут быть результатом программных инициализаторов. Аналогично H/FH defaults из prompt должны иметь признак подтверждения, а не только числовое значение.
+
+### Две реализации используют разные исходные поля и разные значения по умолчанию
+
+**AGPT_CALC** читает VP, H, FH, CN, RHO0 и запускает legacy MassCalc/KsidCalc. Внутри этой команды не читаются TM, K4, VTR, OpeningsPosition, FireKind или давление; результат записывается обратно как MP/MG/FC/MODULE_VOL.
+
+**Collect.FromModel()** читает VP, H, FH, TM, CN, RHO0, K4, VTR, GOTV и запускает отдельный Calc.Mass(). Для отсутствующих значений код подставляет H=3, FH=0.011, TM=25, CN=7.2, RHO0=7.28, K4=1.05, VTR=0.005, GOTV=«Хладон 227еа». Это отличается от конструктора ZoneData и от prompt default AGPT_ZONE. Следовательно, два старых пути способны рассчитывать одну геометрию с разными семантическими входами.
+
+**AGPT_PIPE** сохраняет SEG_TYPE, DY, L, DP=0, Q=0, V_FLOW=0 на каждом сегменте. Агрегированный фактический Vтр и остаточное абсолютное давление из этих полей автоматически не получаются; VTR=0.005 в Collect.FromModel — не вычисленный объём сети. POUT встречается в модели PipeSeg как поле чтения, но текущий AGPT_PIPE его не записывает.
+
+### Критическая особенность standalone GasCalc: валидность значения не равна подтверждённому вводу
+
+Даже ветка PR #2 с ValidateInput содержит POCO-инициализаторы:
+- RoomInput: OpeningsPosition=BottomAndTop, TMinC=20, Fire=ClassAOther, Height=3;
+- ProjectSettings: AltitudeM=347, K3Mode=LowerRow;
+- GotvSpec: Kind=Liquefied, Rho0=7.28, CnHeptane=7.2, TauPod=10, VaporDensityCap=32, LiquidDensity=1400.
+
+Compute также заменяет null ProjectSettings/GotvSpec/catalog на defaults/DefaultCatalog(). DefaultCatalog задаёт ResidualKg=0.0 для всех модулей. Отсутствующее PResidualAbsMpa допускается ValidateInput; при PipeVolume>0 Compute ставит Mtr=0 и выдаёт warning, но возвращает CalcResult.
+
+Поэтому ValidateInput защищает от численно/структурно некорректного объекта, но сам по себе не доказывает, что инженерные значения были введены и подтверждены. Интеграционный слой обязан вести отдельный input provenance/status (например, ENTERED, IMPORTED_VERIFIED, PROJECT_SETTING, MANUFACTURER_DATASHEET, MISSING, UNCONFIRMED) и блокировать выпуск при обязательном MISSING/UNCONFIRMED. Для валидного расчётного выпуска при Vтр>0 остаточное абсолютное давление должно быть обязательным, даже если standalone API допускает null; нулевой Mб не считать паспортным значением без подтверждённого datasheet.
+
+### Обновлённая таблица критических пробелов
+
+| Значение | Текущее фактическое состояние в DWG | Требуемое действие |
+|---|---|---|
+| OpeningsPosition | В XData зоны не сохраняется; дверь/плановая графика не доказывают расположение всех проёмов | Явный инженерный атрибут с provenance |
+| FireKind | K4 в legacy — число/старый коэффициент; в новой модели требуется enum типа горючего | Не конвертировать числовой K4; задать FireKind явно |
+| TMinC | Нет достоверного TM от AGPT_ZONE; Collect использует fallback 25 °C | Добавить явный prompt/property и подтверждение |
+| DeltaVolume | Не хранится | Добавлять отдельно только когда отличается от VP |
+| AltitudeM/K3Mode | Не хранится на объекте/проекте AGPT | Явная настройка проекта + метод выбора K3 между строками |
+| PipeVolume | AGPT_PIPE хранит длины/DN, но нет валидированного агрегатора Vтр; VTR=0.005 — fallback | Вычислить геометрический объём из проверенных сегментов и fittings/внести provenance, не переносить 0.005 |
+| PResidualAbsMpa | Надёжное поле отсутствует; POUT не заполняется текущей командой | Получить абсолютное давление из подтверждённого гидравлического расчёта |
+| GotvSpec | GOTV — строка; физические свойства частично захардкожены в GotvSpec | Сопоставлять с версионированной спецификацией ГОТВ по паспорту/норме |
+| ModuleCatalog / Mб | В Stage3 Flamex; GasCalc DefaultCatalog Proffex; остаток 0.0 | Отдельный подтверждённый каталог и паспортные Mб |
+| ChosenModules | Не хранится как решение инженера в модели зоны | Явный список выбранных модулей по GUID зоны и версия каталога |
+
+**Решение по M1:** никаких подключений GasCalc к AGPT_CALC/ALBUM и никаких расчётных кнопок до появления этой provenance-модели и blocking validator. Текущий PR #2 подтверждает вычислительный модуль на тестовых входах, но не подтверждает готовность реального DWG input mapping.
+
 ## 3. Коллизии каталогов и недопустимые defaults
 
 Сейчас Stage3 содержит ModuleData.Cat (Flamex, 40–120 л), тогда как GasCalc имеет отдельный DefaultCatalog() и собственную модель Module. Эти каталоги не взаимозаменяемы. M1 должен:
