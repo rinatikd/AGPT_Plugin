@@ -171,7 +171,7 @@ namespace AGPT.Calc
             {
                 int count;
                 if (!int.TryParse(chosenCountRaw, NumberStyles.None, CultureInfo.InvariantCulture, out count) ||
-                    count < 1 || count > 100)
+                    count < 1 || count > 20)
                     result.BlockingFindings.Add("Room.ChosenModules.Count: XDATA_COUNT_INVALID");
                 else
                 {
@@ -198,7 +198,7 @@ namespace AGPT.Calc
                 LiquidDensity = RequiredDouble(data, GasCalculationService.Fields.GasLiquidDensity, result)
             };
 
-            int catalogCount = RequiredCount(data, CatalogCountKey, result, 1, 100);
+            int catalogCount = RequiredCount(data, CatalogCountKey, result, 1, 20);
             request.Catalog = new List<Module>();
             for (int i = 0; i < catalogCount; i++)
             {
