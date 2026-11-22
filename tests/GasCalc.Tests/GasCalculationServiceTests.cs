@@ -64,6 +64,12 @@ namespace AGPT.Calc.Tests
             };
         }
 
+        private static void Attach(GasCalculationRequest request, string field, InputEvidence evidence)
+        {
+            evidence.ValueSha256 = GasCalculationService.ComputeEvidenceValueSha256(request, field);
+            request.Evidence[field] = evidence;
+        }
+
         private static GasCalculationRequest ValidRequest()
         {
             var request = new GasCalculationRequest
@@ -101,46 +107,46 @@ namespace AGPT.Calc.Tests
                 }
             };
 
-            request.Evidence[GasCalculationService.Fields.RoomName] = Entered();
-            request.Evidence[GasCalculationService.Fields.RoomVolume] = Entered();
-            request.Evidence[GasCalculationService.Fields.RoomHeight] = Entered();
-            request.Evidence[GasCalculationService.Fields.OpeningsArea] = Entered();
-            request.Evidence[GasCalculationService.Fields.OpeningsPosition] = Entered();
-            request.Evidence[GasCalculationService.Fields.MinTemperature] = Entered();
-            request.Evidence[GasCalculationService.Fields.FireKind] = Entered();
-            request.Evidence[GasCalculationService.Fields.PipeVolume] = Entered();
-            request.Evidence[GasCalculationService.Fields.DeltaVolume] = new InputEvidence
+            Attach(request, GasCalculationService.Fields.RoomName, Entered());
+            Attach(request, GasCalculationService.Fields.RoomVolume, Entered());
+            Attach(request, GasCalculationService.Fields.RoomHeight, Entered());
+            Attach(request, GasCalculationService.Fields.OpeningsArea, Entered());
+            Attach(request, GasCalculationService.Fields.OpeningsPosition, Entered());
+            Attach(request, GasCalculationService.Fields.MinTemperature, Entered());
+            Attach(request, GasCalculationService.Fields.FireKind, Entered());
+            Attach(request, GasCalculationService.Fields.PipeVolume, Entered());
+            Attach(request, GasCalculationService.Fields.DeltaVolume, new InputEvidence
             {
                 Status = InputEvidenceStatus.NotApplicableConfirmed,
                 ActorId = "engineer-001"
-            };
+            });
 
-            request.Evidence[GasCalculationService.Fields.Altitude] =
-                ProjectSetting("project:TEST-001", "rev-1");
-            request.Evidence[GasCalculationService.Fields.K3Mode] =
-                ProjectSetting("project:TEST-001", "rev-1");
+            Attach(request, GasCalculationService.Fields.Altitude,
+                ProjectSetting("project:TEST-001", "rev-1"));
+            Attach(request, GasCalculationService.Fields.K3Mode,
+                ProjectSetting("project:TEST-001", "rev-1"));
 
-            request.Evidence[GasCalculationService.Fields.GasName] =
-                Datasheet("datasheet:TEST-GAS-001");
-            request.Evidence[GasCalculationService.Fields.GasKind] =
-                Normative("normative:SP-RK-2.02-102-2022", "2022");
-            request.Evidence[GasCalculationService.Fields.GasReferenceDensity] =
-                Datasheet("datasheet:TEST-GAS-001");
-            request.Evidence[GasCalculationService.Fields.GasConcentration] =
-                Normative("normative:SP-RK-2.02-102-2022", "2022");
-            request.Evidence[GasCalculationService.Fields.GasInjectionTime] =
-                Normative("normative:SP-RK-2.02-102-2022", "2022");
-            request.Evidence[GasCalculationService.Fields.GasVaporDensityCap] =
-                Datasheet("datasheet:TEST-GAS-001");
-            request.Evidence[GasCalculationService.Fields.GasLiquidDensity] =
-                Datasheet("datasheet:TEST-GAS-001");
+            Attach(request, GasCalculationService.Fields.GasName,
+                Datasheet("datasheet:TEST-GAS-001"));
+            Attach(request, GasCalculationService.Fields.GasKind,
+                Normative("normative:SP-RK-2.02-102-2022", "2022"));
+            Attach(request, GasCalculationService.Fields.GasReferenceDensity,
+                Datasheet("datasheet:TEST-GAS-001"));
+            Attach(request, GasCalculationService.Fields.GasConcentration,
+                Normative("normative:SP-RK-2.02-102-2022", "2022"));
+            Attach(request, GasCalculationService.Fields.GasInjectionTime,
+                Normative("normative:SP-RK-2.02-102-2022", "2022"));
+            Attach(request, GasCalculationService.Fields.GasVaporDensityCap,
+                Datasheet("datasheet:TEST-GAS-001"));
+            Attach(request, GasCalculationService.Fields.GasLiquidDensity,
+                Datasheet("datasheet:TEST-GAS-001"));
 
-            request.Evidence[GasCalculationService.Fields.CatalogName(0)] =
-                Datasheet("datasheet:TEST-MODULE-001");
-            request.Evidence[GasCalculationService.Fields.CatalogFill(0)] =
-                Datasheet("datasheet:TEST-MODULE-001");
-            request.Evidence[GasCalculationService.Fields.CatalogResidual(0)] =
-                Datasheet("datasheet:TEST-MODULE-001");
+            Attach(request, GasCalculationService.Fields.CatalogName(0),
+                Datasheet("datasheet:TEST-MODULE-001"));
+            Attach(request, GasCalculationService.Fields.CatalogFill(0),
+                Datasheet("datasheet:TEST-MODULE-001"));
+            Attach(request, GasCalculationService.Fields.CatalogResidual(0),
+                Datasheet("datasheet:TEST-MODULE-001"));
             return request;
         }
 
@@ -159,36 +165,42 @@ namespace AGPT.Calc.Tests
                 missingResult.IsBlocked && missingResult.Calculation == null);
 
             GasCalculationRequest unconfirmed = ValidRequest();
-            unconfirmed.Evidence[GasCalculationService.Fields.MinTemperature] =
-                new InputEvidence { Status = InputEvidenceStatus.Unconfirmed, ActorId = "engineer-001" };
+            Attach(unconfirmed, GasCalculationService.Fields.MinTemperature,
+                new InputEvidence { Status = InputEvidenceStatus.Unconfirmed, ActorId = "engineer-001" });
             GasCalculationOutcome unconfirmedResult = GasCalculationService.Calculate(unconfirmed);
             Check("unconfirmed temperature cannot be treated as a valid default",
                 unconfirmedResult.IsBlocked && unconfirmedResult.Calculation == null);
 
+            GasCalculationRequest changedValue = ValidRequest();
+            changedValue.Room.Volume = 10.5; // Evidence hash is deliberately not refreshed.
+            GasCalculationOutcome changedValueResult = GasCalculationService.Calculate(changedValue);
+            Check("changed input value invalidates its previous evidence hash",
+                changedValueResult.IsBlocked && changedValueResult.Calculation == null);
+
             GasCalculationRequest badHash = ValidRequest();
-            badHash.Evidence[GasCalculationService.Fields.CatalogResidual(0)] =
+            Attach(badHash, GasCalculationService.Fields.CatalogResidual(0),
                 new InputEvidence
                 {
                     Status = InputEvidenceStatus.ManufacturerDatasheet,
                     SourceRef = "datasheet:TEST-MODULE-001",
                     SourceSha256 = "not-a-sha256"
-                };
+                });
             GasCalculationOutcome badHashResult = GasCalculationService.Calculate(badHash);
             Check("manufacturer catalogue evidence requires source hash",
                 badHashResult.IsBlocked && badHashResult.Calculation == null);
 
             GasCalculationRequest noPressure = ValidRequest();
             noPressure.Room.PipeVolume = 0.002;
-            noPressure.Evidence[GasCalculationService.Fields.PipeVolume] = Entered();
+            Attach(noPressure, GasCalculationService.Fields.PipeVolume, Entered());
             GasCalculationOutcome noPressureResult = GasCalculationService.Calculate(noPressure);
             Check("positive pipe volume without residual pressure evidence blocks",
                 noPressureResult.IsBlocked && noPressureResult.Calculation == null);
 
             GasCalculationRequest noPressureValue = ValidRequest();
             noPressureValue.Room.PipeVolume = 0.002;
-            noPressureValue.Evidence[GasCalculationService.Fields.PipeVolume] = Entered();
-            noPressureValue.Evidence[GasCalculationService.Fields.ResidualAbsPressure] =
-                Imported("hydraulic:TEST-001");
+            Attach(noPressureValue, GasCalculationService.Fields.PipeVolume, Entered());
+            Attach(noPressureValue, GasCalculationService.Fields.ResidualAbsPressure,
+                Imported("hydraulic:TEST-001"));
             GasCalculationOutcome noPressureValueResult = GasCalculationService.Calculate(noPressureValue);
             Check("verified pressure provenance without pressure value still blocks",
                 noPressureValueResult.IsBlocked && noPressureValueResult.Calculation == null);
@@ -209,6 +221,8 @@ namespace AGPT.Calc.Tests
             GasCalculationRequest warning = ValidRequest();
             warning.Room.Fire = FireKind.ClassAOther;
             warning.Room.OpeningsArea = 0.02;
+            Attach(warning, GasCalculationService.Fields.FireKind, Entered());
+            Attach(warning, GasCalculationService.Fields.OpeningsArea, Entered());
             GasCalculationOutcome warningResult = GasCalculationService.Calculate(warning);
             Check("engine warnings prevent release readiness",
                 !warningResult.IsBlocked && warningResult.Calculation != null && !warningResult.CanRelease);
@@ -216,6 +230,8 @@ namespace AGPT.Calc.Tests
             GasCalculationRequest needsChoice = ValidRequest();
             needsChoice.Room.Volume = 1000.0;
             needsChoice.Room.OpeningsArea = 0.0;
+            Attach(needsChoice, GasCalculationService.Fields.RoomVolume, Entered());
+            Attach(needsChoice, GasCalculationService.Fields.OpeningsArea, Entered());
             needsChoice.Catalog = new List<Module> { new Module("TEST-MODULE-40", 40.0, 0.2) };
             GasCalculationOutcome choiceResult = GasCalculationService.Calculate(needsChoice);
             Check("unresolved module selection prevents release readiness",
