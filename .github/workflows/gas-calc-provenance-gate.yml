@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - feat/agpt-m1-provenance-gate-20261122
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
