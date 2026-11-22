@@ -1,0 +1,23 @@
+name: AGPT GasCalc portable tests
+
+on:
+  push:
+    branches:
+      - main
+      - feat/agpt-minimal-autocad-palette-20261122
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  gascalc-golden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Run GasCalc golden checks
+        run: dotnet run --project tests/GasCalc.Tests/GasCalc.Tests.csproj --configuration Release
