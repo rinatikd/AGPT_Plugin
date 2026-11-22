@@ -242,6 +242,7 @@ namespace AGPT.Calc.Tests
             if (!ra.NeedsEngineerDecision || ra.Candidates.Count == 0) fails++;
             fails += RunInputValidationTests();
             fails += GasCalculationServiceTests.Run();
+            fails += GasCalculationXDataAdapterTests.Run();
             Console.WriteLine(fails == 0 ? "ИТОГО: все проверки пройдены" : "ИТОГО: расхождений: " + fails.ToString(ci));
             return fails == 0 ? 0 : 1;
         }
