@@ -1,0 +1,24 @@
+name: AGPT GasCalc input validation
+
+on:
+  push:
+    branches:
+      - fix/gascalc-input-validation-20261122
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  gascalc-validation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Run normative golden and fail-closed input checks
+        run: dotnet run --project tests/GasCalc.Tests/GasCalc.Tests.csproj --configuration Release

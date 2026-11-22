@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Compile Include="..\..\src\Calc\GasCalc.cs" Link="GasCalc.cs" />
+    <Compile Include="..\..\src\Calc\GasCalculationService.cs" Link="GasCalculationService.cs" />
   </ItemGroup>
 
 </Project>
